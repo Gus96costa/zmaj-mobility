@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zmaj | Engineering The Future of Mobility</title>
+    <meta name="description"
+        content="Zmaj is engineering the future of connected mobility in Ljubljana. Silent, zero-emission e-bikes designed for the human-scale city.">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Zmaj | Engineering The Future of Mobility">
+    <meta property="og:description"
+        content="Discover Zmaj's high-performance e-bike ecosystem. Smart mobility for sustainable cities.">
+    <meta property="og:image" content="assets/img/logo-zmaj.webp">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts Stack -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS Framework & Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body class="bg-brand-offwhite">
+
+    <!-- Navbar: Pill Glass -->
+    <nav id="navbar"
+        class="nav-beam fixed top-6 left-1/2 -translate-x-1/2 w-[95vw] lg:w-fit z-50 glass-panel rounded-full pl-6 pr-2 py-2 flex items-center justify-between transition-all duration-300">
+
+        <a href="#home" class="flex items-center cursor-pointer mr-12 relative group nav-link-item" data-section="home"
+            aria-label="Zmaj Homepage">
+            <img src="assets/img/logo-zmaj.webp" alt="Zmaj Logo"
+                class="h-8 w-auto object-contain scale-[1.9] group-hover:scale-[2.1] transition-transform duration-500 drop-shadow-sm origin-center">
+        </a>
+
+        <div class="hidden lg:flex items-center gap-10 mr-10" role="navigation" aria-label="Main Navigation">
+            <a href="#vision"
+                class="text-xs font-mono font-bold tracking-widest text-brand-charcoal transition-colors uppercase nav-link-item"
+                data-section="vision" aria-label="Explore Zmaj's Vision">Vision</a>
+            <a href="#app-trigger"
+                class="text-xs font-mono font-bold tracking-widest text-brand-charcoal transition-colors uppercase nav-link-item"
+                data-section="app-trigger" aria-label="Learn about the Zmaj App">App</a>
+            <a href="#plans"
+                class="text-xs font-mono font-bold tracking-widest text-brand-charcoal transition-colors uppercase nav-link-item"
+                data-section="plans" aria-label="View our Plans and Performance">Plans</a>
+            <a href="#contacts"
+                class="text-xs font-mono font-bold tracking-widest text-brand-charcoal transition-colors uppercase nav-link-item"
+                data-section="contacts" aria-label="Contact Zmaj Support">Contacts</a>
+        </div>
+
+        <a href="#download" aria-label="Download the Zmaj App"
+            class="bg-[#365CD1] text-white text-[10px] font-mono uppercase rounded-full px-8 py-2.5 hover:bg-[#4B5EC2] transition-all group shadow-xl flex items-center gap-3 nav-link-item btn-beam relative overflow-hidden"
+            data-section="download"
+            onmousemove="this.style.setProperty('--mouse-x', (event.clientX - this.getBoundingClientRect().left) + 'px'); this.style.setProperty('--mouse-y', (event.clientY - this.getBoundingClientRect().top) + 'px');">
+            <div class="conversion-flashlight-reveal"></div>
+            <span class="relative z-10 flex items-center gap-2">
+                Download
+                <span class="iconify group-hover:translate-x-1 transition-transform"
+                    data-icon="solar:cloud-download-bold-duotone"></span>
+            </span>
+        </a>
+    </nav>
+
+    <!-- START OF MAIN CONTENT -->
+    <main id="main-content">
+
+        <!-- SECTION 1: HERO - FULL SCREEN -->
+        <header id="home" class="w-full relative z-30 mx-auto bg-brand-offwhite"
+            style="border-radius: 40px 40px 0 0; margin-top: -80px; box-shadow: 0 -20px 50px rgba(0,0,0,0.08); scroll-margin-top: 100px;">
+
+            <!-- Subtle Grid Background -->
+            <div class="absolute inset-0 z-0 opacity-40 pointer-events-none"
+                style="background-image: linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);">
+            </div>
+
+            <div class="relative z-10 px-6 md:px-12 py-10 max-w-[1440px] mx-auto text-center"
+                id="text-scroll-container">
+                <!-- Narrative overlays initialized via logic -->
+            </div>
+
+            <section id="clouds-scroller-section" class="relative w-full h-[1200vh] overflow-visible mt-0"
+                style="background: linear-gradient(180deg, #1A4674 0%, #38BDF8 50%, #E0F6FF 100%);">
+                <!-- Container Sticky centraliza e fixa na tela em modo Edge-to-Edge (Full Screen Mapeado) -->
+                <div class="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
+
+                    <!-- Camadas de Nuvens TRASEIRAS (Menor velocidade parallax) -->
+                    <img id="cloud-back-1" src="assets/templates/zipline/assets/background-clouds_31eb8f4f4c8f.webp"
+                        class="absolute top-[5%] left-[-15vw] w-[60vw] min-w-[600px] opacity-80 z-10 pointer-events-none object-contain drop-shadow-lg">
+                    <img id="cloud-back-2" src="assets/templates/zipline/assets/clouds-p1-back_7072917a354a.webp"
+                        class="absolute top-[10%] right-[-15vw] w-[60vw] min-w-[600px] opacity-80 z-10 pointer-events-none object-contain drop-shadow-lg">
+
+                    <!-- Fundo da Cidade (lj.png) que surge ao final como "chão" -->
+                    <img id="city-ground" src="assets/img/lj-semfundo.webp" alt="City background"
+                        class="absolute bottom-0 left-0 z-0 w-full h-auto origin-bottom pointer-events-none"
+                        style="transform: translateY(100%);">
+
+                    <!-- BEAT 1 TEXT (Atrás da Bike, Alinhado à Esquerda) -->
+                    <div id="beat-1"
+                        class="absolute left-0 z-[15] text-left px-8 md:px-16 w-full lg:w-1/2 flex flex-col justify-center items-start pointer-events-none"
+                        style="transform: translateY(20vh); opacity: 0;">
+                        <h3
+                            class="text-5xl md:text-7xl lg:text-[5.5rem] font-sans font-bold tracking-tighter leading-none glass-title">
+                            Engineering the future of <br /><span class="text-[#4B5EC2] mix-blend-color-burn">urban
+                                mobility.</span>
+                        </h3>
+                    </div>
+
+                    <!-- Objeto Central Fixado e sobrevoando -->
+                    <div id="central-bike"
+                        class="relative z-20 w-[45vw] lg:w-[25vw] max-w-[500px] flex justify-center origin-center opacity-1 scale-2 transition-none">
+                        <img src="assets/img/bici-objeto.webp" alt="Zmaj Bike"
+                            class="w-full h-auto drop-shadow-[0_45px_45px_rgba(0,0,0,0.5)]">
+                    </div>
+
+                    <!-- BEAT 2 TEXT (Na frente da Bike, Alinhado à Direita) -->
+                    <div id="beat-2"
+                        class="absolute right-0 z-[25] text-right px-8 md:px-16 w-full lg:w-1/2 flex flex-col justify-center items-end pointer-events-none"
+                        style="transform: translateY(20vh); opacity: 0;">
+                        <h3
+                            class="text-5xl md:text-7xl lg:text-[5.5rem] font-sans font-bold tracking-tighter leading-[1.1] glass-title">
+                            Designed in Ljubljana.<br /><span class="text-[#4B5EC2] mix-blend-color-burn">Built
+                                for the
+                                world.</span>
+                        </h3>
+                    </div>
+
+                    <!-- Camadas de Nuvens FRONTAIS (Maior velocidade/scrub) -->
+                    <img id="cloud-front-1" src="assets/templates/zipline/assets/foreground-clouds_a625db30f905.png"
+                        class="absolute bottom-[-15%] left-[-20vw] w-[80vw] min-w-[800px] z-30 pointer-events-none object-contain drop-shadow-2xl">
+                    <!-- Nuvem da direita Invertida via Tailwind (transform -scale-x-100) para abraçar simetricamente -->
+                    <img id="cloud-front-2" src="assets/templates/zipline/assets/foreground-clouds_a625db30f905.png"
+                        class="absolute bottom-[-10%] right-[-20vw] w-[80vw] min-w-[800px] z-30 pointer-events-none transform -scale-x-100 object-contain drop-shadow-2xl">
+
+                    <!-- BEAT 3 TEXT (Sobre tudo, Centralizado no Pouso) -->
+                    <div id="beat-3"
+                        class="absolute z-[40] text-center px-4 w-full flex flex-col justify-center items-center pointer-events-none"
+                        style="transform: translateY(20vh); opacity: 0;">
+                        <h3
+                            class="text-5xl md:text-7xl lg:text-[6rem] font-sans font-extrabold tracking-tighter max-w-5xl leading-tight glass-title">
+                            Zero emissions.<br /><span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-brand-aura to-white drop-shadow-lg">Pure
+                                performance.</span>
+                        </h3>
+                    </div>
+                </div>
+            </section>
+        </header>
+
+        <!-- SEÇÃO 2: MANIFESTO STACK -->
+        <section id="vision" class="stack-section relative z-30 pb-[80vh]">
+            <div class="text-center mb-20 px-6 pt-10">
+                <div class="text-xs uppercase tracking-widest mb-4 opacity-70 text-brand-aura font-mono">Zmaj Manifesto
+                </div>
+                <h2
+                    class="text-5xl md:text-6xl lg:text-[5.5rem] font-sans font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-brand-aura to-white drop-shadow-lg">
+                    LJUBLJANA'S
+                    SOUL</h2>
+            </div>
+
+            <div class="stack-container">
+                <!-- Card 1 -->
+                <div class="card-item manifesto-card">
+                    <div class="card-inner bg-brand-charcoal flashlight-card">
+                        <div class="card-content bg-brand-charcoal">
+                            <div>
+                                <div
+                                    class="text-6xl font-sans font-extrabold mb-2 text-brand-aura interactive-light-target interactive-light-number">
+                                    01</div>
+                                <h3 class="text-4xl font-sans font-bold text-white tracking-tight">The Heritage</h3>
+                                <p
+                                    class="text-sm mt-4 uppercase tracking-widest font-mono text-brand-zip interactive-light-target interactive-light-label">
+                                    Plečnik’s Vision
+                                </p>
+                            </div>
+                            <div class="text-[#DEDFE0] font-sans font-light text-lg xl:text-xl leading-relaxed">
+                                Since 2007, Ljubljana’s historical center has been a car-free ecological zone of 12
+                                hectares.
+                                Zmaj is the technological infrastructure designed to respect Jože Plečnik’s human-scale
+                                architecture, providing silent,
+                                zero-emission mobility for the soul of the city.
+                            </div>
+                        </div>
+                        <div class="card-img-wrap bg-brand-dark relative">
+                            <img alt="The Heritage" class="card-img" src="assets/img/cesta-bike.webp" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-brand-charcoal via-transparent to-transparent w-1/3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card-item manifesto-card">
+                    <div class="card-inner bg-brand-charcoal flashlight-card">
+                        <div class="card-content bg-brand-charcoal">
+                            <div>
+                                <div
+                                    class="text-6xl font-sans font-extrabold mb-2 text-brand-aura interactive-light-target interactive-light-number">
+                                    02</div>
+                                <h3 class="text-4xl font-sans font-bold text-white tracking-tight">The Urban Pulse</h3>
+                                <p
+                                    class="text-sm mt-4 uppercase tracking-widest font-mono text-brand-zip interactive-light-target interactive-light-label">
+                                    Digital Rhythm</p>
+                            </div>
+                            <div class="text-[#DEDFE0] font-sans font-light text-lg xl:text-xl leading-relaxed">
+                                A smart, invisible skeleton powers the city. The Zmaj network breathes life into urban
+                                commutes.
+                                Scan effortlessly, ride silently, and dock seamlessly at illuminated Zmaj Spots spread
+                                across town.
+                                Digital convenience meets physical freedom.
+                            </div>
+                            <a href="#download"
+                                class="w-fit btn-beam btn-beam-blue bg-white/5 backdrop-blur-md border border-white/10 text-white px-8 py-3 rounded-full font-mono text-sm transition-all hover:bg-white/10 hover:shadow-[0_0_20px_rgba(75,94,194,0.3)] flex items-center gap-2 group">
+                                Download Zmaj App
+                                <span class="iconify group-hover:translate-x-1 transition-transform"
+                                    data-icon="solar:arrow-right-up-outline"></span>
+                            </a>
+                        </div>
+                        <div class="card-img-wrap bg-brand-dark relative">
+                            <img alt="The Urban Pulse" class="card-img" src="assets/img/app-bike.webp" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-brand-charcoal via-transparent to-transparent w-1/3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card-item manifesto-card">
+                    <div class="card-inner bg-brand-charcoal flashlight-card">
+                        <div class="card-content bg-brand-charcoal">
+                            <div>
+                                <div
+                                    class="text-6xl font-sans font-extrabold mb-2 text-brand-aura interactive-light-target interactive-light-number">
+                                    03</div>
+                                <h3 class="text-4xl font-sans font-bold text-white tracking-tight">The Green Symbiosis
+                                </h3>
+                                <p
+                                    class="text-sm mt-4 uppercase tracking-widest font-mono text-brand-zip interactive-light-target interactive-light-label">
+                                    Social
+                                    Impact</p>
+                            </div>
+                            <div class="text-[#DEDFE0] font-sans font-light text-lg xl:text-xl leading-relaxed">
+                                As the first EU capital to commit to a Zero Waste vision,
+                                Ljubljana relies on Zmaj to bridge the gap between urban growth and environmental
+                                preservation. By neutralizing carbon footprints and restoring the city’s natural
+                                silence,
+                                we ensure that the only pulse felt along the Ljubljanica banks is the rhythm of life
+                                itself.
+                            </div>
+                        </div>
+                        <div class="card-img-wrap bg-brand-dark relative">
+                            <img alt="The Green Symbiosis" class="card-img" src="assets/img/motor-bike.webp" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-brand-charcoal via-transparent to-transparent w-1/3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: APP HUB -->
+        <section id="app-hub-section"
+            class="relative w-full h-[1300vh] z-20 overflow-visible -mt-[120vh] pt-[12vh] opacity-0"
+            style="background: radial-gradient(circle at center, #FFFFFF 0%, #E0F6FF 60%, #9cc9f9 100%);">
+
+            <!-- Ponto de ancoragem preciso: Posicionado exatamente no início da entrada do primeiro texto narrativo -->
+            <div id="app-trigger" class="absolute top-[70vh] left-0 w-full pointer-events-none"></div>
+            <!-- Container Sticky -->
+            <div class="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
+
+                <!-- VANTAGENS (Esquerda -> Trilho) -->
+                <div id="vantage-cards"
+                    class="absolute left-0 w-max h-full flex flex-col justify-center px-6 md:pl-16 pr-[5vw] pointer-events-none z-10 opacity-0 -translate-x-[100vw]">
+
+                    <!-- Título do Trilho Esquerdo (Vantagens) embutido no slider -->
+                    <div id="vantage-title" class="w-full text-left z-10 opacity-0 pointer-events-none mb-10">
+                        <h2
+                            class="text-4xl md:text-6xl font-sans font-black tracking-tighter leading-[1.1] py-2 brand-gradient-title drop-shadow-sm">
+                            Digital Ecosystem
+                        </h2>
+                    </div>
+
+                    <div class="flex flex-row items-stretch gap-5 w-full">
+                        <!-- Card 1 -->
+                        <div
+                            class="flashlight-hub-card btn-beam flex-shrink-0 w-[85vw] max-w-[310px] p-6 md:p-7 rounded-3xl shadow-[0_20px_60px_rgba(20,30,50,0.08)] pointer-events-auto flex flex-col border border-transparent hover:border-white/10 transition-all">
+                            <div
+                                class="w-10 h-10 rounded-full bg-brand-aura/10 text-brand-aura flex items-center justify-center mb-6">
+                                <span class="iconify text-lg" data-icon="solar:widget-add-bold-duotone"></span>
+                            </div>
+                            <h4
+                                class="font-sans font-black tracking-tighter leading-[1.1] py-1 text-2xl brand-gradient-title mb-4">
+                                Connected Ecosystem</h4>
+                            <p class="text-brand-muted font-sans text-sm leading-relaxed">Smart dashboard with ride
+                                estimates and daily usage statistics in the city.</p>
+                        </div>
+
+                        <!-- Card 2 (Centered/Majorized to match Annual Plan) -->
+                        <div
+                            class="flashlight-hub-card btn-beam flex-shrink-0 w-[85vw] max-w-[330px] p-6 md:p-8 rounded-3xl shadow-[0_20px_60px_rgba(20,30,50,0.08)] pointer-events-auto flex flex-col border border-transparent hover:border-white/10 transition-all">
+                            <div
+                                class="w-10 h-10 rounded-full bg-brand-zip/10 text-brand-zip flex items-center justify-center mb-6">
+                                <span class="iconify text-lg" data-icon="solar:leaf-bold-duotone"></span>
+                            </div>
+                            <h4
+                                class="font-sans font-black tracking-tighter leading-[1.1] py-1 text-3xl brand-gradient-title mb-5">
+                                Zero Impact</h4>
+                            <p class="text-brand-muted font-sans text-sm leading-relaxed">Track your reduced carbon
+                                footprint
+                                in real-time. Move while cleaning the air.</p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div
+                            class="flashlight-hub-card btn-beam flex-shrink-0 w-[85vw] max-w-[310px] p-6 md:p-7 rounded-3xl shadow-[0_20px_60px_rgba(20,30,50,0.08)] pointer-events-auto flex flex-col border border-transparent hover:border-white/10 transition-all">
+                            <div
+                                class="w-10 h-10 rounded-full bg-[#1c1b1b]/10 text-brand-charcoal flex items-center justify-center mb-6">
+                                <span class="iconify text-lg" data-icon="solar:shield-check-bold-duotone"></span>
+                            </div>
+                            <h4
+                                class="font-sans font-black tracking-tighter leading-[1.1] py-1 text-2xl brand-gradient-title mb-4">
+                                Active Security</h4>
+                            <p class="text-brand-muted font-sans text-sm leading-relaxed">Perimeter monitoring via
+                                Bluetooth
+                                and immediate anti-theft locking system.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- PRICING (Direita -> Trilho) -->
+                <div id="plans-cards-rail"
+                    class="absolute right-0 w-max h-full flex flex-col justify-center items-end px-6 md:pr-16 pl-[5vw] pointer-events-none z-10 opacity-0 translate-x-[100vw]">
+
+                    <!-- Landing Anchor para os Planos (Posicionado para capturar o título Pricing & Performance) -->
+                    <div id="plans" class="absolute top-[550vh] left-0 w-full pointer-events-none"></div>
+
+                    <!-- Título do Trilho Direito (Planos) embutido no slider -->
+                    <div id="pricing-title" class="w-full text-right z-10 opacity-0 pointer-events-none mb-10 pr-4">
+                        <h2
+                            class="text-4xl md:text-6xl font-sans font-black tracking-tighter leading-[1.1] py-2 brand-gradient-title drop-shadow-sm">
+                            Plans & Performance
+                        </h2>
+                    </div>
+
+                    <div class="flex flex-row items-stretch justify-end gap-5 w-full">
+                        <!-- Card 1: Daily Pass -->
+                        <div
+                            class="flashlight-hub-card btn-beam flex-shrink-0 w-[85vw] max-w-[310px] p-6 md:p-7 rounded-3xl shadow-[0_20px_60px_rgba(20,30,50,0.08)] pointer-events-auto relative flex flex-col border border-transparent hover:border-white/10 transition-all">
+                            <span
+                                class="font-mono text-[10px] text-brand-muted font-bold uppercase tracking-widest mb-4 block">Starter</span>
+                            <h4
+                                class="font-sans font-black tracking-tighter leading-[1.1] py-1 text-2xl brand-gradient-title mb-4">
+                                Daily Pass</h4>
+                            <p class="text-brand-muted font-sans text-sm mb-6">Perfect for travelers and occasional
+                                riders.
+                                24-hour e-bike access.</p>
+
+                            <div class="mt-auto">
+                                <div class="font-mono font-bold text-brand-charcoal text-3xl mb-6">€5<span
+                                        class="text-xs font-sans text-brand-muted font-normal">/day</span></div>
+                                <button
+                                    class="w-fit self-start bg-gradient-to-r from-[#4B5EC2]/20 to-[#38BDF8]/20 backdrop-blur-md text-[#4B5EC2] px-5 py-2 rounded-full group transition-all hover:scale-105 hover:from-[#4B5EC2] hover:to-[#38BDF8] hover:text-white border border-[#4B5EC2]/30 font-sans font-bold text-[9px] tracking-widest uppercase">
+                                    <span class="relative z-10">Select Plan</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Annual Subscription (Zmaj Pro) -->
+                        <div id="card-zmaj-pro"
+                            class="flashlight-hub-card btn-beam flex-shrink-0 w-[85vw] max-w-[330px] p-6 md:p-8 rounded-3xl shadow-[0_20px_60px_rgba(20,30,50,0.08)] pointer-events-auto relative flex flex-col border border-transparent hover:border-white/10 transition-all">
+                            <div
+                                class="absolute top-4 right-4 px-2 py-0.5 bg-[#4B5EC2]/10 text-[#4B5EC2] text-[9px] font-mono uppercase font-bold rounded-full">
+                                POPULAR</div>
+                            <span
+                                class="font-mono text-[10px] text-brand-muted font-bold uppercase tracking-widest mb-4 block">Zmaj
+                                Pro</span>
+                            <h4
+                                class="font-sans font-black tracking-tighter leading-[1.1] py-1 text-3xl brand-gradient-title mb-4">
+                                Annual Plan</h4>
+                            <p class="text-brand-muted font-sans text-sm mb-5">Unlimited rides, priority support, and
+                                theft
+                                coverage.</p>
+
+                            <ul class="mb-6 space-y-2">
+                                <li class="flex items-center gap-2 text-brand-muted text-[11px] font-sans">
+                                    <span class="iconify text-[#4B5EC2]" data-icon="solar:check-circle-bold"></span>
+                                    Unlimited Rides
+                                </li>
+                                <li class="flex items-center gap-2 text-brand-muted text-[11px] font-sans">
+                                    <span class="iconify text-[#4B5EC2]" data-icon="solar:check-circle-bold"></span>
+                                    Theft Coverage
+                                </li>
+                            </ul>
+
+                            <div class="mt-auto">
+                                <div class="font-mono font-bold text-brand-charcoal text-4xl mb-6">€29<span
+                                        class="text-xs font-sans text-brand-muted font-normal">/month</span></div>
+                                <button
+                                    class="w-fit self-start bg-gradient-to-r from-[#4B5EC2]/20 to-[#38BDF8]/20 backdrop-blur-md text-[#4B5EC2] px-5 py-2.5 rounded-full group transition-all hover:scale-105 hover:from-[#4B5EC2] hover:to-[#38BDF8] hover:text-white border border-[#4B5EC2]/30 font-sans font-bold text-[9px] tracking-widest uppercase">
+                                    <span class="relative z-10">Select Plan</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Business Fleet -->
+                        <div
+                            class="flashlight-hub-card btn-beam flex-shrink-0 w-[85vw] max-w-[310px] p-6 md:p-7 rounded-3xl shadow-[0_20px_60px_rgba(20,30,50,0.08)] pointer-events-auto relative flex flex-col border border-transparent hover:border-white/10 transition-all">
+                            <span
+                                class="font-mono text-[10px] text-brand-muted font-bold uppercase tracking-widest mb-4 block">Fleet</span>
+                            <h4
+                                class="font-sans font-black tracking-tighter leading-[1.1] py-1 text-2xl brand-gradient-title mb-4">
+                                Business</h4>
+                            <p class="text-brand-muted font-sans text-sm mb-6">Custom solutions for companies and
+                                hotels.
+                            </p>
+
+                            <div class="mt-auto">
+                                <div class="font-mono font-bold text-brand-charcoal text-3xl mb-6">Custom</div>
+                                <button
+                                    class="w-fit self-start bg-gradient-to-r from-[#4B5EC2]/20 to-[#38BDF8]/20 backdrop-blur-md text-[#4B5EC2] px-5 py-2 rounded-full group transition-all hover:scale-105 hover:from-[#4B5EC2] hover:to-[#38BDF8] hover:text-white border border-[#4B5EC2]/30 font-sans font-bold text-[9px] tracking-widest uppercase">
+                                    <span class="relative z-10">Contact Us</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Textos de Apresentação Fixos no Topo (Overlays Descida) -->
+                <style>
+                    @keyframes floatIntro {
+
+                        0%,
+                        100% {
+                            transform: translateY(0);
+                        }
+
+                        50% {
+                            transform: translateY(-15px);
+                        }
+                    }
+
+                    .floating-text {
+                        animation: floatIntro 4s ease-in-out infinite;
+                    }
+                </style>
+                <div id="hub-text-overlay" class="absolute inset-0 pointer-events-none z-[60]">
+                    <!-- Text 1 (Left Wing) -->
+                    <div id="intro-text-1"
+                        class="absolute left-8 lg:left-[10%] top-1/2 -translate-y-1/2 opacity-0 text-left">
+                        <div class="floating-text">
+                            <h2
+                                class="text-5xl md:text-7xl lg:text-[5.5rem] font-sans font-black tracking-tighter drop-shadow-2xl max-w-2xl leading-none glass-title">
+                                Engineering the future of <br /><span class='text-[#4B5EC2]'>connected mobility.</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <!-- Text 2 (Right Wing) -->
+                    <div id="intro-text-2"
+                        class="absolute right-8 lg:right-[10%] top-1/2 -translate-y-1/2 opacity-0 text-right">
+                        <div class="floating-text">
+                            <h2
+                                class="text-5xl md:text-7xl lg:text-[5.5rem] font-sans font-black tracking-tighter drop-shadow-2xl max-w-2xl leading-none glass-title">
+                                Total control <br /><span class='text-[#4B5EC2]'>at your fingertips.</span>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Celular Centralizado Mapeado -->
+                <div id="hub-phone-container"
+                    class="absolute inset-0 flex items-center justify-center pointer-events-none z-50 perspective-[2000px]">
+                    <div id="hub-phone" class="relative w-[85vw] md:w-[65vw] max-w-[900px]"
+                        style="transform: translateY(-150vh);">
+
+                        <!-- Camada de Aura Magnética (Multi Drop-shadow mapeia automaticamente o alpha do PNG gerando o Glow Duo-tone traseiro) -->
+                        <div id="magnet-glow"
+                            style="filter: drop-shadow(0 -10px 30px rgba(56,189,248,0.08)) drop-shadow(0 10px 30px rgba(54,92,209,0.08));"
+                            class="relative z-10 w-full transition-all duration-300">
+
+                            <!-- Imagem Original Realista Restaurada (Sem filtros) -->
+                            <img src="assets/img/map-city.webp" alt="Zmaj App Mobile Showroom"
+                                class="w-full h-auto object-contain origin-center transform scale-100">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: DOWNLOAD / CONVERSION (Cinematic Video + Interactive Carousel) -->
+        <section id="download"
+            class="relative w-full min-h-[110vh] overflow-hidden bg-black flex items-center justify-center z-30">
+            <!-- 1. Máscara de Transição (The Gradient Feather) -->
+            <div class="absolute top-0 left-0 w-full h-[20vh] z-20 pointer-events-none"
+                style="background: linear-gradient(to bottom, #9cc9f9 0%, rgba(156, 201, 249, 0.8) 30%, transparent 100%);">
+            </div>
+
+            <!-- Cinematic Background Video -->
+            <video id="download-video" autoplay loop muted playsinline
+                class="absolute inset-0 w-full h-full object-cover z-0">
+                <source src="assets/video/bike-city.mp4" type="video/mp4">
+            </video>
+            <!-- Overlay for readability -->
+            <div id="video-overlay" class="absolute inset-0 bg-black/60 z-10"></div>
+
+            <!-- Layout Container (Transparency focused) -->
+            <div id="download-carousel-container"
+                class="relative z-30 w-full max-w-6xl px-6 flex flex-col items-center justify-center text-center overflow-hidden">
+
+                <div id="carousel-messages-wrapper"
+                    class="w-full relative min-h-[450px] flex items-center justify-center">
+                    <!-- Slide 1: App Stores -->
+                    <div
+                        class="carousel-slide-content absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none z-10">
+                        <h2
+                            class="text-5xl md:text-8xl font-sans font-black tracking-tighter mb-32 leading-[1.1] py-4 brand-gradient-title drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+                            Available for <br />download now</h2>
+                        <div
+                            class="flex flex-col md:flex-row items-center gap-12 drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+                            <a href="#"
+                                class="conversion-beam group transition-transform hover:scale-105 flex items-center gap-5 bg-white/10 text-white hover:bg-white hover:text-black px-8 py-4 rounded-3xl backdrop-blur-xl border border-white/10 shadow-2xl btn-beam"
+                                onmousemove="this.style.setProperty('--mouse-x', (event.clientX - this.getBoundingClientRect().left) + 'px'); this.style.setProperty('--mouse-y', (event.clientY - this.getBoundingClientRect().top) + 'px');">
+                                <div class="conversion-flashlight-reveal"></div>
+                                <span class="iconify text-2xl relative z-10" data-icon="logos:apple-app-store"></span>
+                                <div class="text-left font-sans relative z-10">
+                                    <p class="text-[12px] uppercase tracking-widest opacity-70">Download on the</p>
+                                    <p class="text-xl font-black">App Store</p>
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="conversion-beam group transition-transform hover:scale-105 flex items-center gap-5 bg-white/10 text-white hover:bg-white hover:text-black px-8 py-4 rounded-3xl backdrop-blur-xl border border-white/10 shadow-2xl btn-beam"
+                                onmousemove="this.style.setProperty('--mouse-x', (event.clientX - this.getBoundingClientRect().left) + 'px'); this.style.setProperty('--mouse-y', (event.clientY - this.getBoundingClientRect().top) + 'px');">
+                                <div class="conversion-flashlight-reveal"></div>
+                                <span class="iconify text-2xl relative z-10" data-icon="logos:google-play-icon"></span>
+                                <div class="text-left font-sans relative z-10">
+                                    <p class="text-[12px] uppercase tracking-widest opacity-70">Get it on</p>
+                                    <p class="text-xl font-black">Google Play</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: QR Code -->
+                    <div
+                        class="carousel-slide-content absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none z-10">
+                        <h2
+                            class="text-5xl md:text-8xl font-sans font-black tracking-tighter mb-32 leading-none brand-gradient-title drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+                            Scan to ride</h2>
+                        <div class="conversion-beam p-6 bg-white/10 text-white hover:bg-white hover:text-black backdrop-blur-xl rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] relative group transition-all btn-beam"
+                            onmousemove="this.style.setProperty('--mouse-x', (event.clientX - this.getBoundingClientRect().left) + 'px'); this.style.setProperty('--mouse-y', (event.clientY - this.getBoundingClientRect().top) + 'px');">
+                            <div class="conversion-flashlight-reveal"></div>
+                            <!-- QR Code Aura -->
+                            <div
+                                class="absolute inset-0 bg-brand-aura/40 blur-3xl rounded-full scale-90 group-hover:scale-125 transition-transform">
+                            </div>
+                            <span class="iconify text-[70px] text-inherit relative z-10"
+                                data-icon="solar:qr-code-bold-duotone"></span>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Early Access -->
+                    <div
+                        class="carousel-slide-content absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none z-10">
+                        <h2
+                            class="text-5xl md:text-8xl font-sans font-black tracking-tighter mb-32 leading-none brand-gradient-title drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+                            Join the future of <br />urban mobility</h2>
+                        <div class="drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+                            <button
+                                class="conversion-beam bg-brand-aura/20 text-white hover:bg-brand-aura hover:text-white backdrop-blur-xl text-xl font-sans font-black rounded-full px-12 py-5 transition-all shadow-2xl group flex items-center gap-5 btn-beam"
+                                onmousemove="this.style.setProperty('--mouse-x', (event.clientX - this.getBoundingClientRect().left) + 'px'); this.style.setProperty('--mouse-y', (event.clientY - this.getBoundingClientRect().top) + 'px');">
+                                <div class="conversion-flashlight-reveal"></div>
+                                <span class="relative z-10 flex items-center gap-5">
+                                    Get Early Access
+                                    <span class="iconify group-hover:translate-x-2 transition-transform"
+                                        data-icon="solar:arrow-right-bold-duotone"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Indicators -->
+                <div class="flex gap-4 mt-10 drop-shadow-2xl relative z-30">
+                    <div
+                        class="carousel-dot w-10 h-1 rounded-full bg-white shadow-[0_0_15px_rgba(56,189,248,0.8)] transition-all duration-300 cursor-pointer hover:scale-x-110">
+                    </div>
+                    <div
+                        class="carousel-dot w-6 h-1 rounded-full bg-white/20 transition-all duration-300 cursor-pointer hover:scale-x-110 opacity-60">
+                    </div>
+                    <div
+                        class="carousel-dot w-6 h-1 rounded-full bg-white/20 transition-all duration-300 cursor-pointer hover:scale-x-110 opacity-60">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODERN ELITE FOOTER -->
+        <footer id="contacts" class="relative w-full pt-20 pb-10 overflow-hidden bg-black"
+            style="scroll-margin-top: 100px;">
+            <div class="footer-noise"></div>
+            <div class="footer-glow"></div>
+
+            <!-- ZMAJ Background Underlay -->
+            <h2 id="footer-logo-massive" class="font-sans">ZMAJ</h2>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16 items-start">
+
+                    <!-- Ecosystem Menu -->
+                    <div class="lg:col-span-3">
+                        <p
+                            class="font-mono text-[9px] text-brand-aura uppercase tracking-[0.4em] mb-6 font-bold opacity-70">
+                            Ecosystem</p>
+                        <ul class="space-y-3">
+                            <li><a href="#"
+                                    class="text-white/50 font-sans text-sm hover:text-white transition-colors footer-link-glow">The
+                                    E-Bike</a></li>
+                            <li><a href="#"
+                                    class="text-white/50 font-sans text-sm hover:text-white transition-colors footer-link-glow">App
+                                    Hub</a></li>
+                            <li><a href="#"
+                                    class="text-white/50 font-sans text-sm hover:text-white transition-colors footer-link-glow">Urban
+                                    Network</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company Menu -->
+                    <div class="lg:col-span-3">
+                        <p
+                            class="font-mono text-[9px] text-brand-aura uppercase tracking-[0.4em] mb-6 font-bold opacity-70">
+                            Company</p>
+                        <ul class="space-y-3">
+                            <li><a href="#"
+                                    class="text-white/50 font-sans text-sm hover:text-white transition-colors footer-link-glow">Our
+                                    Journey</a></li>
+                            <li><a href="#"
+                                    class="text-white/50 font-sans text-sm hover:text-white transition-colors footer-link-glow">Ljubljana
+                                    Base</a></li>
+                            <li><a href="#"
+                                    class="text-white/50 font-sans text-sm hover:text-white transition-colors footer-link-glow">Press
+                                    Kit</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter / Minimalist -->
+                    <div class="lg:col-span-6 bg-white/5 backdrop-blur-md border border-white/5 p-8 rounded-2xl">
+                        <p
+                            class="font-mono text-[9px] text-brand-aura uppercase tracking-[0.4em] mb-4 font-bold opacity-70">
+                            Updates</p>
+                        <div class="newsletter-flashlight-wrapper p-1 flex items-center mb-6">
+                            <div class="newsletter-flashlight-reveal"></div>
+                            <input type="email" placeholder="EMAIL ADDRESS"
+                                aria-label="Enter your email for Zmaj updates"
+                                class="flex-1 bg-transparent border-none px-4 py-3 text-white font-mono text-xs focus:outline-none placeholder:text-white/20 relative z-10" />
+                            <button aria-label="Sign up for our newsletter"
+                                class="bg-brand-aura text-black font-bold px-6 py-3 rounded-xl text-xs hover:bg-white transition-colors relative z-10">
+                                SIGN UP
+                            </button>
+                        </div>
+                        <p class="text-white/30 font-serif italic text-sm">
+                            "Engineering the future of urban freedom."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bottom Line -->
+                <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="flex gap-6">
+                        <a href="#" class="text-white/30 hover:text-brand-aura transition-all"
+                            aria-label="Follow Zmaj on Instagram">
+                            <span class="iconify text-lg" data-icon="solar:instagram-bold-duotone"></span>
+                        </a>
+                        <a href="#" class="text-white/30 hover:text-brand-aura transition-all"
+                            aria-label="Send us an Email">
+                            <span class="iconify text-lg" data-icon="solar:letter-bold-duotone"></span>
+                        </a>
+                        <a href="#" class="text-white/30 hover:text-brand-aura transition-all"
+                            aria-label="Find our Location">
+                            <span class="iconify text-lg" data-icon="solar:map-point-bold-duotone"></span>
+                        </a>
+                    </div>
+
+                    <div class="text-white/10 font-mono text-[9px] tracking-[0.3em] uppercase">
+                        © 2026 ZMAJ MOBILITY
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- CORE LIBRARIES -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+
+    <!-- GSAP LOGIC -->
+    <!-- Custom Scripts -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

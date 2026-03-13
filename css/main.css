@@ -1,0 +1,583 @@
+body {
+    background-color: #FFFFFF;
+    color: #212121;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ---------------------------------------------------- */
+/* EFEITO LETTERING TRANSPARENTE ZIPLINE (Cutout overlay) */
+/* ---------------------------------------------------- */
+.transparent-text-cutout {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.9);
+    transition: all 0.5s ease;
+}
+
+.transparent-text-cutout:hover {
+    -webkit-text-stroke: 4px rgba(255, 255, 255, 1);
+    text-shadow: 0px 0px 40px rgba(255, 255, 255, 0.4);
+}
+
+/* ---------------------------------------------------- */
+/* COMPONENTES DECORATIVOS & BACKGROUNDS */
+/* ---------------------------------------------------- */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    position: relative;
+}
+
+.blob-bg {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ---------------------------------------------------- */
+/* BOTOES AURA */
+/* ---------------------------------------------------- */
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.btn-shiny {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-radius: 99px;
+    padding: 14px 32px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background: linear-gradient(#212121, #030303) padding-box,
+        conic-gradient(from var(--gradient-angle), transparent 0%, #38BDF8 5%, #FFFFFF 15%, #365CD1 30%, transparent 40%) border-box;
+    border: 2px solid transparent;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+    cursor: pointer;
+    animation: border-spin 4s linear infinite;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-shiny:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(56, 189, 248, 0.3);
+}
+
+@keyframes border-spin {
+    to {
+        --gradient-angle: 360deg;
+    }
+}
+
+/* ---------------------------------------------------- */
+/* GLASS TITLE STYLE (VIDRO LAPIDADO) */
+/* ---------------------------------------------------- */
+.glass-title {
+    color: rgba(255, 255, 255, 0.95) !important;
+    opacity: 0.9;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.brand-gradient-title {
+    background-image: linear-gradient(90deg, #4B5EC2 0%, #38BDF8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    display: inline-block;
+    padding-right: 0.1em;
+    /* Previne corte em tracking-tighter */
+    padding-bottom: 0.1em;
+    /* Previne corte de descenders */
+    margin-bottom: -0.1em;
+    /* Compensa o padding para manter alinhamento */
+}
+
+/* ---------------------------------------------------- */
+/* BEAM BORDER ANIMATION (NAV) */
+/* ---------------------------------------------------- */
+@property --nav-beam-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.nav-beam {
+    position: relative;
+}
+
+.nav-beam::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(from var(--nav-beam-angle), transparent 35%, rgba(56, 189, 248, 1) 45%, rgba(54, 92, 209, 1) 55%, transparent 65%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 1;
+    animation: nav-beam-spin 6s linear infinite;
+    transition: opacity 0.5s ease, background 0.5s ease;
+}
+
+.nav-beam:hover::before {
+    opacity: 1;
+    background: conic-gradient(from var(--nav-beam-angle), transparent 15%, rgba(56, 189, 248, 1) 35%, rgba(54, 92, 209, 1) 50%, transparent 85%);
+    animation-duration: 2.5s;
+}
+
+@keyframes nav-beam-spin {
+    to {
+        --nav-beam-angle: 360deg;
+    }
+}
+
+/* ---------------------------------------------------- */
+/* CONVERSION BEAM (HUD STYLE) */
+/* ---------------------------------------------------- */
+.conversion-beam {
+    position: relative;
+}
+
+.conversion-beam::before {
+    content: "";
+    position: absolute;
+    inset: -1.5px;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(from var(--nav-beam-angle), transparent 20%, #38BDF8 35%, #365CD1 50%, transparent 70%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 1;
+    filter: blur(0.5px);
+    animation: nav-beam-spin 4s linear infinite;
+    transition: all 0.4s ease;
+}
+
+.conversion-beam:hover::before {
+    opacity: 1;
+    filter: blur(1.5px);
+    animation-duration: 1.5s;
+    background: conic-gradient(from var(--nav-beam-angle), transparent 10%, #38BDF8 30%, #365CD1 50%, transparent 90%);
+}
+
+/* ---------------------------------------------------- */
+/* MODERN ELITE FOOTER (ZMAJ GALAXY) */
+/* ---------------------------------------------------- */
+#contacts {
+    background-color: #080808 !important;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(75, 94, 194, 0.15);
+}
+
+.footer-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 2;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.footer-glow {
+    position: absolute;
+    bottom: -10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 40vh;
+    background: radial-gradient(circle at center, rgba(75, 94, 194, 0.1), transparent 70%);
+    filter: blur(100px);
+    z-index: 1;
+    pointer-events: none;
+}
+
+#footer-logo-massive {
+    font-size: 30vw;
+    line-height: 0.7;
+    font-weight: 950;
+    letter-spacing: -0.07em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(75, 94, 194, 0.05);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    z-index: 1;
+    pointer-events: none;
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    text-shadow: 0 0 40px rgba(75, 94, 194, 0);
+    white-space: nowrap;
+    user-select: none;
+    opacity: 0.6;
+}
+
+#contacts:hover #footer-logo-massive {
+    -webkit-text-stroke: 2px rgba(75, 94, 194, 0.2);
+    text-shadow: 0 0 80px rgba(75, 94, 194, 0.3), 0 0 150px rgba(54, 92, 209, 0.15);
+    opacity: 1;
+    transform: translate(-50%, -40%);
+}
+
+.footer-link-glow {
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+}
+
+.footer-link-glow:hover {
+    color: #38BDF8 !important;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
+    transform: translateY(-2px);
+}
+
+.newsletter-flashlight-wrapper {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.01);
+    transition: all 0.4s ease;
+    border-radius: 20px;
+}
+
+.newsletter-flashlight-wrapper:focus-within {
+    border-color: rgba(75, 94, 194, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.newsletter-flashlight-reveal {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(150px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+            rgba(75, 94, 194, 0.2),
+            transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.newsletter-flashlight-wrapper:hover .newsletter-flashlight-reveal {
+    opacity: 1;
+}
+
+/* Logo Beam Animation */
+#footer-logo-massive::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(75, 94, 194, 0.3), transparent);
+    pointer-events: none;
+    z-index: 5;
+    mix-blend-mode: overlay;
+}
+
+#footer-logo-massive:hover::after {
+    animation: footer-logo-beam 2s infinite linear;
+}
+
+@keyframes footer-logo-beam {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* ---------------------------------------------------- */
+/* BTN-BEAM (LINEAR TRAVERSE) & FLASHLIGHT CONVERSION */
+/* ---------------------------------------------------- */
+.btn-beam {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-beam::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: beam-loop 3s infinite;
+    pointer-events: none;
+    z-index: 4;
+}
+
+@keyframes beam-loop {
+    0% {
+        left: -110%;
+    }
+
+    40%,
+    100% {
+        left: 110%;
+    }
+}
+
+.btn-beam-blue::after {
+    background: linear-gradient(90deg, transparent, rgba(75, 94, 194, 0.4), transparent) !important;
+}
+
+.conversion-flashlight-reveal {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(400px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+            rgba(255, 255, 255, 0.15),
+            transparent 40%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.group:hover .conversion-flashlight-reveal {
+    opacity: 1;
+}
+
+/* ---------------------------------------------------- */
+/* STICKY STACK MANIFESTO */
+/* ---------------------------------------------------- */
+.stack-section {
+    padding: 10vh 0;
+    background: #1c1b1b;
+    position: relative;
+}
+
+.stack-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 10vh;
+    z-index: 10;
+}
+
+.card-item {
+    position: sticky;
+    top: 10vh;
+    /* Cards stick here */
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5vh;
+}
+
+.card-inner {
+    width: 90%;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    border-radius: 24px;
+}
+
+.card-content {
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.card-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.5s ease, filter 1.5s ease;
+    filter: grayscale(40%) contrast(1.1);
+}
+
+.card-inner:hover .card-img {
+    transform: scale(1.08);
+    filter: grayscale(0%) contrast(1.1);
+}
+
+/* Mobile adjustment */
+@media (max-width: 768px) {
+    .card-inner {
+        grid-template-columns: 1fr;
+        border-radius: 16px;
+    }
+
+    .card-item {
+        top: 5vh;
+        height: 85vh;
+    }
+
+    .card-img-wrap {
+        height: 50%;
+        order: -1;
+    }
+
+    .card-content {
+        padding: 2rem;
+    }
+}
+
+/* ---------------------------------------------------- */
+/* ELITE SEAMLESS BLEND (Transição Céu -> Manifesto) */
+/* ---------------------------------------------------- */
+#clouds-scroller-section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25vh;
+    background: linear-gradient(to bottom, transparent, #1c1b1b);
+    pointer-events: none;
+    z-index: 45;
+    /* Posicionado acima de tudo da primeira dobra, mas abaixo do novo bloco de section */
+}
+
+/* ---------------------------------------------------- */
+/* FLASHLIGHT EFFECT E INTERAÇÃO GLOBAL NOS CARDS */
+/* ---------------------------------------------------- */
+#vision {
+    --mouse-x: -1000px;
+    --mouse-y: -1000px;
+    --flashlight-opacity: 1;
+}
+
+.flashlight-card {
+    position: relative;
+}
+
+.flashlight-card::before {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 191, 0, 0.08), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#vision:hover .flashlight-card::before {
+    opacity: var(--flashlight-opacity);
+}
+
+.interactive-light-target {
+    transition: opacity 0.2s ease-out;
+}
+
+.interactive-light-number {
+    opacity: calc(0.2 + (0.8 * var(--light-intensity, 0))) !important;
+}
+
+.interactive-light-label {
+    opacity: calc(0.8 + (0.2 * var(--light-intensity, 0))) !important;
+}
+
+/* ---------------------------------------------------- */
+/* APP HUB SECTION */
+/* ---------------------------------------------------- */
+.flashlight-hub-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flashlight-hub-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Specific card beam override for slower timing and subtler opacity */
+.flashlight-hub-card.btn-beam::after {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: card-beam-loop 4s infinite ease-in-out;
+    z-index: 5;
+}
+
+.flashlight-hub-card:hover.btn-beam::after {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    animation-duration: 2s;
+}
+
+@keyframes card-beam-loop {
+    0% {
+        left: -110%;
+    }
+
+    30% {
+        left: 110%;
+    }
+
+    100% {
+        left: 110%;
+    }
+}
+
+.flashlight-hub-card::before {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    background: radial-gradient(350px circle at var(--mouse-x, -2000px) var(--mouse-y, -2000px), rgba(56, 189, 248, 0.08), rgba(54, 92, 209, 0.02) 30%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.flashlight-hub-card.light-active::before {
+    opacity: 1;
+}
+
+/* Active Navigation State */
+.nav-link-item {
+    position: relative;
+    transition: all 0.4s ease;
+    text-decoration: none !important;
+}
+
+.nav-link-item.active {
+    color: #38BDF8 !important;
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+.nav-link-item:hover {
+    color: #365CD1 !important;
+}

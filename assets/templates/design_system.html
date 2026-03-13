@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City-Bike / Design System Premium</title>
+
+    <!-- Zipline & Aura References -->
+    <link href="zipline/assets/TextCard_999523abea25.css" rel="stylesheet" />
+    <link href="zipline/assets/0_245e55898baa.css" rel="stylesheet" />
+    <link href="zipline/assets/AssetStarfieldSection_243a0d849639.css" rel="stylesheet" />
+    <link href="zipline/assets/CtaButtonSection_d8b613e4ac61.css" rel="stylesheet" />
+    <link href="zipline/assets/FluidCardGrid_3367d8ec61ae.css" rel="stylesheet" />
+    
+    <!-- Google Fonts: Inter -> Primary | Newsreader -> Serif | Space Mono -> Monospace -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Newsreader', 'serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            zip: '#365cd1',
+                            ziplight: '#e8eeff',
+                            aura: '#38BDF8',
+                            dark: '#111317',
+                            light: '#FAFAFA',
+                            white: '#FFFFFF',
+                            gray: '#EBEBEB',
+                            text: '#212121',
+                            muted: '#858585',
+                            feedback: { success: '#10B981', error: '#EF4444', warning: '#F59E0B' }
+                        }
+                    },
+                    backgroundImage: {
+                        'radial-glow': 'radial-gradient(circle at 60% 40%, rgba(54, 92, 209, 0.08) 0%, rgba(255, 255, 255, 0) 70%)',
+                        'gradient-glass': 'linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 100%)',
+                        'mesh': 'radial-gradient(at 10% 20%, hsla(228,100%,74%,0.15) 0px, transparent 50%), radial-gradient(at 80% 0%, hsla(189,100%,56%,0.15) 0px, transparent 50%), radial-gradient(at 0% 50%, hsla(355,100%,93%,0.1) 0px, transparent 50%)'
+                    },
+                    animation: {
+                        'beam': 'beam 3s linear infinite',
+                        'spin-slow': 'spin 15s linear infinite',
+                        'pulse-fast': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'marquee': 'marquee 30s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        beam: { '0%': { strokeDashoffset: '1000' }, '100%': { strokeDashoffset: '0' } },
+                        marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-15px)' } },
+                        slideUp: { '0%': { opacity: '0', transform: 'translateY(40px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base styles from Zipline inspiration */
+        body { background-color: #FAFAFA; color: #212121; -webkit-font-smoothing: antialiased; }
+        
+        /* Outline Transparent Lettering (O Efeito Solicitado) */
+        .outline-lettering {
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.9);
+            position: relative;
+            background: url('zipline/assets/homepage_20250612_v04_desktop_ce60ee68f450.webp') no-repeat center center;
+            background-size: cover;
+            background-clip: text;
+            -webkit-background-clip: text;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+        }
+
+        .outline-lettering-dark {
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(33, 33, 33, 0.4);
+            background: linear-gradient(120deg, #365cd1, #38BDF8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            mix-blend-mode: multiply;
+        }
+        
+        /* Grid Background Pattern (Clean Light Theme) */
+        .grid-bg-light {
+            background-size: 80px 80px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 30%, transparent 90%);
+        }
+
+        /* Glassmorphism Panel */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Bento Grid Card */
+        .bento-card {
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            background: #fff;
+        }
+        .bento-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+
+        /* Aura Shiny CTA Button Adapted to Light Theme */
+        @property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+        .shiny-cta {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            border-radius: 9999px;
+            padding: 1rem 2.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            background: linear-gradient(#365cd1, #2546a1) padding-box,
+                        conic-gradient(from var(--gradient-angle), transparent 0%, #38BDF8 5%, #ffffff 15%, #38BDF8 30%, transparent 40%) border-box;
+            border: 2px solid transparent;
+            box-shadow: 0 8px 25px rgba(54, 92, 209, 0.3);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+            cursor: pointer;
+            animation: border-spin 3s linear infinite;
+        }
+        .shiny-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(54, 92, 209, 0.4); }
+        .shiny-cta:active { transform: translateY(1px); }
+        @keyframes border-spin { to { --gradient-angle: 360deg; } }
+        
+        .shiny-cta::after {
+            content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: translateX(-100%); transition: transform 0.6s ease; z-index: -1;
+        }
+        .shiny-cta:hover::after { transform: translateX(100%); }
+
+        /* Secondary Pill Button with Gradient Border */
+        .pill-button-secondary {
+            position: relative;
+            border-radius: 9999px;
+            padding: 1rem 2.5rem;
+            color: #212121;
+            background: rgba(255,255,255,0.8);
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .pill-button-secondary::before {
+            content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 2px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(0,0,0,0.02));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+        }
+        .pill-button-secondary:hover { background: #fff; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transform: translateY(-1px); }
+
+        /* Scroll Reveal Utility */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Smooth marquee */
+        .animate-marquee { animation: marquee 35s linear infinite; }
+        .mask-edges { -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+
+    </style>
+</head>
+<body class="bg-brand-light bg-mesh min-h-screen text-brand-text selection:bg-brand-zip selection:text-white">
+
+    <!-- Navbar: Pill Shaped, Floating, Glass -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-full max-w-[90vw] lg:max-w-fit z-50 glass-panel rounded-full pl-6 pr-2 py-2 flex items-center justify-between shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all">
+        <div class="flex items-center gap-3 cursor-pointer mr-10">
+            <!-- Logo Icon Minimalist -->
+            <div class="w-8 h-8 rounded-full bg-brand-zip flex items-center justify-center text-white">
+                <span class="iconify w-5 h-5" data-icon="solar:bolt-bold-duotone"></span>
+            </div>
+            <span class="font-sans font-bold text-lg tracking-tight text-brand-dark">SysDesign</span>
+        </div>
+        
+        <div class="hidden md:flex items-center gap-8 mr-10">
+            <a href="#typography" class="text-sm font-medium text-brand-muted hover:text-brand-zip transition-colors">Tipografia</a>
+            <a href="#colors" class="text-sm font-medium text-brand-muted hover:text-brand-zip transition-colors">Cores</a>
+            <a href="#components" class="text-sm font-medium text-brand-muted hover:text-brand-zip transition-colors">UI Components</a>
+            <a href="#animations" class="text-sm font-medium text-brand-muted hover:text-brand-zip transition-colors">Animações</a>
+        </div>
+        
+        <button class="bg-brand-dark hover:bg-brand-zip text-white text-sm font-semibold rounded-full px-6 py-2.5 flex items-center gap-2 transition-all">
+            Get Delivery 
+            <span class="iconify" data-icon="solar:arrow-right-linear"></span>
+        </button>
+    </nav>
+
+    <!-- 1. HERO - DEMONSTRATION -->
+    <header class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
+        
+        <div class="absolute inset-0 grid-bg-light pointer-events-none z-0"></div>
+
+        <!-- Zipline Inspired Video Background in a Pill cut or Fullscreen blurred -->
+        <div class="absolute inset-0 z-0 flex items-center justify-center p-4">
+            <div class="w-full h-full max-w-[98%] max-h-[96%] rounded-[40px] overflow-hidden relative shadow-2xl">
+                <video class="w-full h-full object-cover scale-105" autoplay loop muted playsinline poster="zipline/assets/homepage_20250612_v04_desktop_ce60ee68f450.webp">
+                    <source src="zipline/assets/homepage_20250612_v04_desktop_db2ab6827e7d.mp4" type="video/mp4" />
+                </video>
+                <div class="absolute inset-0 bg-brand-light/30 backdrop-blur-[2px]"></div>
+                <!-- Radial Soft Light -->
+                <div class="absolute top-0 right-0 w-full h-full bg-radial-glow border-none pointer-events-none"></div>
+            </div>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center text-center max-w-5xl px-4 mt-16 animate-slide-up">
+            
+            <div class="flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-black/5 bg-white/40 backdrop-blur-md shadow-sm">
+                <span class="flex h-2 w-2 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-zip opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-zip"></span>
+                </span>
+                <span class="text-xs font-mono text-brand-zip uppercase tracking-[0.2em] font-semibold">City-bike OS v1.0</span>
+            </div>
+
+            <!-- Lettering Transparente -->
+            <h1 class="text-[5rem] md:text-[8rem] lg:text-[10rem] font-sans font-extrabold tracking-tighter leading-[0.85] outline-lettering mix-blend-overlay">
+                STORE TO DOOR
+            </h1>
+            <h1 class="text-5xl md:text-7xl font-serif italic text-brand-dark mt-4 mix-blend-color-burn text-center leading-tight">
+                Design com precisão absoluta.
+            </h1>
+
+            <p class="mt-8 text-lg font-medium text-brand-dark/70 max-w-2xl font-sans tracking-tight">
+                Um sistema de design inspirado na velocidade e transparência. Linhas limpas, componentes táteis e animações coreografadas para um futuro mais eficiente.
+            </p>
+
+            <div class="mt-10 flex flex-col sm:flex-row gap-4 items-center">
+                <button class="shiny-cta">Explorar Sistema</button>
+                <button class="pill-button-secondary flex items-center gap-2 group">
+                    Play Video 
+                    <span class="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-brand-zip group-hover:text-white transition-colors">
+                        <span class="iconify" data-icon="solar:play-bold"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Hovering Drone / Float Element (Aura/Zipline Vibe) -->
+        <div class="absolute bottom-10 right-10 animate-float hidden lg:block drop-shadow-2xl">
+            <img src="zipline/assets/smart_d731fdb4f6b3.png" alt="Zip Drone" class="w-64 opacity-90 mix-blend-multiply" />
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-6 py-24 space-y-40">
+
+        <!-- 2. TIPOGRAFIA -->
+        <section id="typography" class="reveal">
+            <div class="mb-12 border-b border-black/10 pb-8">
+                <h5 class="font-mono text-brand-zip uppercase tracking-widest text-sm mb-2">01. Tipografia</h5>
+                <h2 class="text-4xl md:text-5xl font-serif italic tracking-tight text-brand-dark">Hierarquia Textual</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <!-- Stack Details -->
+                <div class="space-y-8 glass-panel p-8 rounded-[32px]">
+                    <div>
+                        <h4 class="text-xs uppercase font-mono text-brand-muted tracking-wider mb-2">Primary Font (Sans)</h4>
+                        <p class="font-sans text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-zip to-brand-aura">Inter</p>
+                        <p class="text-sm text-brand-muted mt-1 font-sans">CDN Loading, Webdings fallback. For UI, buttons, standard copy.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs uppercase font-mono text-brand-muted tracking-wider mb-2">Secondary Font (Serif)</h4>
+                        <p class="font-serif text-3xl italic bg-clip-text text-transparent bg-gradient-to-r from-brand-dark to-brand-muted">Newsreader</p>
+                        <p class="text-sm text-brand-muted mt-1 font-sans">For emotional headings, quotes, premium accents.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs uppercase font-mono text-brand-muted tracking-wider mb-2">Monospace Font</h4>
+                        <p class="font-mono text-2xl font-bold tracking-widest text-brand-dark">Space Mono</p>
+                        <p class="text-sm text-brand-muted mt-1 font-sans">For data, labels, code, microcopy.</p>
+                    </div>
+                </div>
+
+                <!-- Typographic Scale -->
+                <div class="space-y-6">
+                    <div class="flex items-baseline gap-4 border-b border-black/5 pb-4">
+                        <span class="font-mono text-xs text-brand-muted w-16 shrink-0">H1</span>
+                        <h1 class="font-serif italic text-6xl text-brand-dark leading-tight">Heading 1</h1>
+                    </div>
+                    <div class="flex items-baseline gap-4 border-b border-black/5 pb-4">
+                        <span class="font-mono text-xs text-brand-muted w-16 shrink-0">H2</span>
+                        <h2 class="font-serif italic text-5xl text-brand-dark tracking-tight">Heading 2</h2>
+                    </div>
+                    <div class="flex items-baseline gap-4 border-b border-black/5 pb-4">
+                        <span class="font-mono text-xs text-brand-muted w-16 shrink-0">H3</span>
+                        <h3 class="font-sans font-bold text-4xl text-brand-dark tracking-tighter">Heading 3</h3>
+                    </div>
+                    <div class="flex items-baseline gap-4 border-b border-black/5 pb-4">
+                        <span class="font-mono text-xs text-brand-muted w-16 shrink-0">H4</span>
+                        <h4 class="font-sans font-semibold text-2xl text-brand-dark tracking-tight">Heading 4</h4>
+                    </div>
+                    <div class="flex items-baseline gap-4 border-b border-black/5 pb-4">
+                        <span class="font-mono text-xs text-brand-muted w-16 shrink-0">BODY-LG</span>
+                        <p class="font-sans font-normal text-xl text-brand-dark/80 leading-relaxed">Large body text for introductory paragraphs. It needs to read smooth and clean.</p>
+                    </div>
+                    <div class="flex items-baseline gap-4 border-b border-black/5 pb-4">
+                        <span class="font-mono text-xs text-brand-muted w-16 shrink-0">BODY</span>
+                        <p class="font-sans font-normal text-base text-brand-dark/70 leading-relaxed">Standard body copy. The quick brown fox jumps over the lazy dog. Legibility is key.</p>
+                    </div>
+                    <div class="flex items-baseline gap-4">
+                        <span class="font-mono text-xs text-brand-muted w-16 shrink-0">LABEL</span>
+                        <span class="font-mono text-xs uppercase tracking-[0.15em] text-brand-zip font-bold">Helper Role & Microcopy</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. CORES -->
+        <section id="colors" class="reveal">
+            <div class="mb-12 border-b border-black/10 pb-8 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+                <div>
+                    <h5 class="font-mono text-brand-zip uppercase tracking-widest text-sm mb-2">02. Sistema de Cores</h5>
+                    <h2 class="text-4xl md:text-5xl font-serif italic tracking-tight text-brand-dark">Paleta Semântica</h2>
+                </div>
+                <p class="text-sm font-sans font-medium text-brand-muted max-w-sm">Contrast intent: AAA optimized. Clean light theme properties with pure white and deep brand accents.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Color Card Primary -->
+                <div class="bento-card p-4 space-y-4">
+                    <div class="w-full h-32 rounded-2xl bg-brand-zip shadow-inner flex items-end p-4">
+                        <span class="text-white font-mono text-sm uppercase tracking-wider">Primary</span>
+                    </div>
+                    <div>
+                        <p class="font-sans font-bold text-brand-dark">Zipline Blue</p>
+                        <p class="font-mono text-xs text-brand-muted">HEX #365CD1</p>
+                        <p class="font-mono text-xs text-brand-muted">Role: Base Action, Brand</p>
+                    </div>
+                </div>
+                <!-- Color Card Secondary -->
+                <div class="bento-card p-4 space-y-4">
+                    <div class="w-full h-32 rounded-2xl bg-[#8D5AC9] shadow-inner flex items-end p-4">
+                        <span class="text-white font-mono text-sm uppercase tracking-wider">Secondary</span>
+                    </div>
+                    <div>
+                        <p class="font-sans font-bold text-brand-dark">Electric Purple</p>
+                        <p class="font-mono text-xs text-brand-muted">HEX #8D5AC9</p>
+                        <p class="font-mono text-xs text-brand-muted">Role: Accent, Decorative</p>
+                    </div>
+                </div>
+                <!-- Color Card Aura Sky -->
+                <div class="bento-card p-4 space-y-4">
+                    <div class="w-full h-32 rounded-2xl bg-brand-aura shadow-inner flex items-end p-4">
+                        <span class="text-white font-mono text-sm uppercase tracking-wider">Accent</span>
+                    </div>
+                    <div>
+                        <p class="font-sans font-bold text-brand-dark">Aura Sky</p>
+                        <p class="font-mono text-xs text-brand-muted">HEX #38BDF8</p>
+                        <p class="font-mono text-xs text-brand-muted">Role: Glow gradients, hover</p>
+                    </div>
+                </div>
+                <!-- Color Card Neutral -->
+                <div class="bento-card p-4 space-y-4">
+                    <div class="w-full h-32 rounded-2xl bg-brand-dark shadow-inner flex items-end p-4 border border-black/5" >
+                        <span class="text-white font-mono text-sm uppercase tracking-wider">Neutral</span>
+                    </div>
+                    <div>
+                        <p class="font-sans font-bold text-brand-dark">Deep Charcoal</p>
+                        <p class="font-mono text-xs text-brand-muted">HEX #111317</p>
+                        <p class="font-mono text-xs text-brand-muted">Role: Headings, text, borders</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. COMPONENTES -->
+        <section id="components" class="reveal">
+            <div class="mb-12 border-b border-black/10 pb-8">
+                <h5 class="font-mono text-brand-zip uppercase tracking-widest text-sm mb-2">03. UI Components</h5>
+                <h2 class="text-4xl md:text-5xl font-serif italic tracking-tight text-brand-dark">Arquitetura Visual</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                
+                <!-- Buttons & Inputs (Left Col) -->
+                <div class="lg:col-span-5 space-y-10">
+                    <!-- Buttons -->
+                    <div class="glass-panel p-8 rounded-3xl">
+                        <h4 class="font-serif italic text-2xl mb-6">Buttons</h4>
+                        <div class="flex flex-col gap-6">
+                            <div>
+                                <button class="shiny-cta w-full flex justify-center items-center gap-2">
+                                    Primary Action
+                                    <span class="iconify" data-icon="solar:arrow-right-line-duotone"></span>
+                                </button>
+                                <p class="text-xs font-mono text-brand-muted mt-2 text-center">Animated Shiny CTA</p>
+                            </div>
+                            
+                            <div>
+                                <button class="pill-button-secondary w-full text-center">
+                                    Secondary View
+                                </button>
+                                <p class="text-xs font-mono text-brand-muted mt-2 text-center">Border Gradient Pill</p>
+                            </div>
+
+                            <div>
+                                <button class="flex items-center justify-center gap-2 w-full py-4 font-sans font-bold text-brand-zip hover:text-brand-dark transition-colors group">
+                                    Text Link Button
+                                    <span class="iconify group-hover:translate-x-1 transition-transform" data-icon="solar:alt-arrow-right-linear"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inputs -->
+                    <div class="glass-panel p-8 rounded-3xl">
+                        <h4 class="font-serif italic text-2xl mb-6">Form Elements</h4>
+                        <div class="space-y-4">
+                            <div class="relative">
+                                <label class="block text-xs font-mono uppercase text-brand-muted mb-1">Email Address</label>
+                                <input type="email" placeholder="jane@example.com" class="w-full bg-white border border-brand-gray px-5 py-4 rounded-xl font-sans text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-zip/30 focus:border-brand-zip transition-all shadow-sm" />
+                                <span class="iconify absolute right-4 top-10 text-brand-muted w-5 h-5" data-icon="solar:letter-linear"></span>
+                            </div>
+                            <!-- Search -->
+                            <div class="relative top-2">
+                                <input type="text" placeholder="Search components..." class="w-full bg-brand-light border-none px-12 py-4 rounded-full font-sans text-sm text-brand-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-black/5 transition-all shadow-inner" />
+                                <span class="iconify absolute left-4 top-4 text-brand-dark w-5 h-5" data-icon="solar:magnifer-linear"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Badges -->
+                    <div class="glass-panel p-8 rounded-3xl">
+                        <h4 class="font-serif italic text-2xl mb-6">States & Badges</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-brand-feedback-success/10 text-brand-feedback-success">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-feedback-success"></span> Active
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-brand-feedback-warning/10 text-brand-feedback-warning">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-feedback-warning"></span> Pending
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 pb-[5px] rounded-full text-xs font-mono font-bold border border-black/10 bg-white text-brand-dark">
+                                V1.0 Release
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento Cards (Right Col) -->
+                <div class="lg:col-span-7">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full">
+                        
+                        <!-- Bento Card 1 -->
+                        <div class="bento-card p-6 flex flex-col justify-between sm:col-span-2 group min-h-[250px] relative overflow-hidden bg-brand-zip text-white">
+                            <div class="absolute inset-0 bg-radial-glow opacity-50"></div>
+                            <div class="relative z-10 flex justify-between items-start">
+                                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
+                                    <span class="iconify w-6 h-6" data-icon="solar:box-minimalistic-bold-duotone"></span>
+                                </div>
+                                <span class="text-xs font-mono uppercase tracking-widest bg-white/10 px-3 py-1 rounded-full">New Feature</span>
+                            </div>
+                            <div class="relative z-10 mt-10">
+                                <h3 class="text-3xl font-serif italic mb-2">Delivery modal overview</h3>
+                                <p class="text-white/80 font-sans font-light max-w-sm">Complex interactions wrapped in minimalist layers.</p>
+                            </div>
+                        </div>
+
+                        <!-- Bento Card 2 -->
+                        <div class="bento-card p-6 flex flex-col justify-end bg-white group cursor-pointer border border-transparent hover:border-black/5 aspect-square">
+                            <div class="mb-auto">
+                                <span class="iconify w-8 h-8 text-brand-aura" data-icon="solar:satellite-bold-duotone"></span>
+                            </div>
+                            <div>
+                                <h4 class="font-sans font-bold text-lg text-brand-dark mb-1 group-hover:text-brand-zip transition-colors">Sonar Detection</h4>
+                                <p class="text-sm font-sans text-brand-muted">Ping animation feedback.</p>
+                            </div>
+                        </div>
+
+                        <!-- Bento Card 3: Image background like Zipline -->
+                        <div class="bento-card group cursor-pointer relative aspect-square overflow-hidden bg-[#fafafa]">
+                            <div class="absolute inset-0 bg-[url('zipline/assets/homepage_20250612_v04_desktop_ce60ee68f450.webp')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <h4 class="font-sans font-bold text-xl text-white mb-1">Hover Scaling</h4>
+                                <p class="text-sm font-sans text-white/70 flex items-center gap-1 group-hover:gap-2 transition-all">
+                                    Interactive images 
+                                    <span class="iconify" data-icon="solar:arrow-right-line-duotone"></span>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. ÍCONES -->
+        <section id="icons" class="reveal">
+            <div class="mb-12 border-b border-black/10 pb-8 text-center">
+                <h5 class="font-mono text-brand-zip uppercase tracking-widest text-sm mb-2">04. Iconografia</h5>
+                <h2 class="text-4xl md:text-5xl font-serif italic tracking-tight text-brand-dark">Solar Icons Duotone</h2>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-8">
+                <div class="w-20 h-20 rounded-2xl glass-panel border border-brand-gray flex items-center justify-center text-brand-zip hover:-translate-y-2 transition-transform cursor-pointer shadow-sm">
+                    <span class="iconify w-8 h-8" data-icon="solar:box-bold-duotone"></span>
+                </div>
+                <div class="w-20 h-20 rounded-2xl glass-panel border border-brand-gray flex items-center justify-center text-brand-aura hover:-translate-y-2 transition-transform cursor-pointer shadow-sm">
+                    <span class="iconify w-8 h-8" data-icon="solar:map-arrow-bold-duotone"></span>
+                </div>
+                <div class="w-20 h-20 rounded-2xl glass-panel border border-brand-gray flex items-center justify-center text-[#8D5AC9] hover:-translate-y-2 transition-transform cursor-pointer shadow-sm">
+                    <span class="iconify w-8 h-8" data-icon="solar:magic-stick-3-bold-duotone"></span>
+                </div>
+                <div class="w-20 h-20 rounded-2xl glass-panel border border-brand-gray flex items-center justify-center text-brand-feedback-success hover:-translate-y-2 transition-transform cursor-pointer shadow-sm">
+                    <span class="iconify w-8 h-8" data-icon="solar:shield-check-bold-duotone"></span>
+                </div>
+                <div class="w-20 h-20 rounded-2xl glass-panel border border-brand-gray flex items-center justify-center text-brand-dark hover:-translate-y-2 transition-transform cursor-pointer shadow-sm">
+                    <span class="iconify w-8 h-8" data-icon="solar:settings-bold-duotone"></span>
+                </div>
+                <div class="w-20 h-20 rounded-2xl glass-panel border border-brand-gray flex items-center justify-center text-brand-muted hover:-translate-y-2 transition-transform cursor-pointer shadow-sm">
+                    <span class="iconify w-8 h-8" data-icon="solar:card-bold-duotone"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. ANIMAÇÕES MARQUEE & BACKGROUND -->
+        <section id="animations" class="reveal pb-20">
+            <div class="mb-12 border-b border-black/10 pb-8">
+                <h5 class="font-mono text-brand-zip uppercase tracking-widest text-sm mb-2">05. Animações Flúidas</h5>
+                <h2 class="text-4xl md:text-5xl font-serif italic tracking-tight text-brand-dark">Marquee & Sonar</h2>
+            </div>
+            
+            <div class="w-full glass-panel rounded-[40px] p-10 overflow-hidden relative">
+                
+                <!-- Background Sonar Concept (Abstract) -->
+                <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 w-[400px] h-[400px] opacity-20 pointer-events-none flex items-center justify-center">
+                    <div class="absolute w-full h-full border border-brand-zip rounded-full animate-[ping_4s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
+                    <div class="absolute w-3/4 h-3/4 border border-brand-aura rounded-full animate-[ping_4s_cubic-bezier(0,0,0.2,1)_infinite]" style="animation-delay: 1s"></div>
+                    <div class="w-2 h-2 bg-brand-zip rounded-full"></div>
+                </div>
+
+                <h3 class="font-sans font-bold text-2xl mb-12">Integração de Parcerias</h3>
+                
+                <!-- Infinite Marquee -->
+                <div class="mask-edges w-full overflow-hidden">
+                    <div class="flex animate-marquee hover:[animation-play-state:paused] w-max gap-x-24 items-center opacity-60 grayscale filter hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                        <img src="zipline/assets/walmart-black_c94292bb6b54.svg" alt="Walmart" class="h-8" />
+                        <img src="zipline/assets/partner-chipotle_33fb73870ff6.svg" alt="Chipotle" class="h-10" />
+                        <img src="zipline/assets/jetspizza_7467b5e826c1.svg" alt="Jets" class="h-12" />
+                        <img src="zipline/assets/partner-panera-bread_a30397f17ad3.svg" alt="Panera" class="h-8" />
+                        <img src="zipline/assets/sweetgreen-black_17609e64298e.svg" alt="Sweetgreen" class="h-6" />
+                        <img src="zipline/assets/mendocino-farms_2ae85d2750ee.svg" alt="Mendocino" class="h-10" />
+                        <!-- Duplicated for seamless loop -->
+                        <img src="zipline/assets/walmart-black_c94292bb6b54.svg" alt="Walmart" class="h-8" />
+                        <img src="zipline/assets/partner-chipotle_33fb73870ff6.svg" alt="Chipotle" class="h-10" />
+                        <img src="zipline/assets/jetspizza_7467b5e826c1.svg" alt="Jets" class="h-12" />
+                        <img src="zipline/assets/partner-panera-bread_a30397f17ad3.svg" alt="Panera" class="h-8" />
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+    </div>
+
+    <!-- Script for Scroll Reveal -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                reveals.forEach(reveal => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    const elementVisible = 100;
+                    
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Trigger initially
+        });
+    </script>
+</body>
+</html>
