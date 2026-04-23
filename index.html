@@ -34,7 +34,7 @@
 <body class="bg-brand-offwhite">
 
     <div id="loader" class="fixed inset-0 z-[100] bg-brand-offwhite flex items-center justify-center transition-all">
-        <img src="assets/img/logo-zmaj.webp" alt="Loading Zmaj" class="w-24 md:w-32 h-auto opacity-50 animate-pulse">
+        <img src="assets/img/logo-zmaj.webp" alt="Loading Zmaj" class="w-24 md:w-32 h-auto opacity-50 animate-pulse" width="128" height="128">
     </div>
 
     <!-- Navbar: Pill Glass -->
@@ -44,7 +44,7 @@
         <a href="#home" class="flex items-center cursor-pointer flex-shrink-0 relative group nav-link-item"
             data-section="home" aria-label="Zmaj Homepage">
             <img src="assets/img/logo-zmaj.webp" alt="Zmaj Logo"
-                class="h-8 w-auto object-contain scale-[1.9] group-hover:scale-[2.1] transition-transform duration-500 drop-shadow-sm origin-center">
+                class="h-8 w-auto object-contain scale-[1.9] group-hover:scale-[2.1] transition-transform duration-500 drop-shadow-sm origin-center" width="128" height="128">
         </a>
 
         <!-- Desktop Links -->
@@ -128,13 +128,13 @@
                 <div class="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
 
                     <!-- Camadas de Nuvens TRASEIRAS (Menor velocidade parallax) -->
-                    <img id="cloud-back-1" src="assets/templates/zipline/assets/background-clouds_31eb8f4f4c8f.webp"
+                    <img id="cloud-back-1" src="assets/templates/zipline/assets/background-clouds_31eb8f4f4c8f.webp" width="1400" height="600"
                         class="absolute top-[5%] left-[-15vw] w-[60vw] min-w-[600px] opacity-80 z-10 pointer-events-none object-contain drop-shadow-lg">
-                    <img id="cloud-back-2" src="assets/templates/zipline/assets/clouds-p1-back_7072917a354a.webp"
+                    <img id="cloud-back-2" src="assets/templates/zipline/assets/clouds-p1-back_7072917a354a.webp" width="1400" height="600"
                         class="absolute top-[10%] right-[-15vw] w-[60vw] min-w-[600px] opacity-80 z-10 pointer-events-none object-contain drop-shadow-lg">
 
                     <!-- Fundo da Cidade (lj.png) que surge ao final como "chão" -->
-                    <img id="city-ground" src="assets/img/lj-semfundo.webp" alt="City background"
+                    <img id="city-ground" src="assets/img/lj-semfundo.webp" alt="City background" width="1920" height="1080"
                         class="absolute bottom-0 left-0 z-0 w-full h-auto origin-bottom pointer-events-none"
                         style="transform: translateY(100%);">
 
@@ -152,8 +152,8 @@
                     <!-- Objeto Central Fixado e sobrevoando -->
                     <div id="central-bike"
                         class="relative z-20 w-[45vw] lg:w-[25vw] max-w-[500px] flex justify-center origin-center opacity-1 scale-2 transition-none">
-                        <img src="assets/img/bici-objeto.webp" alt="Zmaj Bike"
-                            class="w-full h-auto drop-shadow-[0_45px_45px_rgba(0,0,0,0.5)]">
+                        <img src="assets/img/bici-objeto.webp" alt="Zmaj Bike" width="1200" height="800"
+                            class="w-full h-auto drop-shadow-[0_45px_45px_rgba(0,0,0,0.5)]" fetchpriority="high">
                     </div>
 
                     <!-- BEAT 2 TEXT (Na frente da Bike, Alinhado à Direita) -->
@@ -169,10 +169,10 @@
                     </div>
 
                     <!-- Camadas de Nuvens FRONTAIS (Maior velocidade/scrub) -->
-                    <img id="cloud-front-1" src="assets/templates/zipline/assets/foreground-clouds_30f0de30b804.webp"
+                    <img id="cloud-front-1" src="assets/templates/zipline/assets/foreground-clouds_30f0de30b804.webp" width="1600" height="800"
                         class="absolute bottom-[-15%] left-[-20vw] w-[80vw] min-w-[800px] z-30 pointer-events-none object-contain drop-shadow-2xl">
                     <!-- Nuvem da direita Invertida via Tailwind (transform -scale-x-100) para abraçar simetricamente -->
-                    <img id="cloud-front-2" src="assets/templates/zipline/assets/foreground-clouds_30f0de30b804.webp"
+                    <img id="cloud-front-2" src="assets/templates/zipline/assets/foreground-clouds_30f0de30b804.webp" width="1600" height="800"
                         class="absolute bottom-[-10%] right-[-20vw] w-[80vw] min-w-[800px] z-30 pointer-events-none transform -scale-x-100 object-contain drop-shadow-2xl">
 
                     <!-- BEAT 3 TEXT (Sobre tudo, Centralizado no Pouso) -->
@@ -225,7 +225,7 @@
                             </div>
                         </div>
                         <div class="card-img-wrap bg-brand-dark relative">
-                            <img alt="The Heritage" class="card-img" src="assets/img/cesta-bike.webp" />
+                            <img alt="The Heritage" class="card-img" src="assets/img/cesta-bike.webp" loading="lazy" width="800" height="600" />
                             <div
                                 class="absolute inset-0 bg-gradient-to-r from-brand-charcoal via-transparent to-transparent w-1/3">
                             </div>
@@ -261,7 +261,7 @@
                             </a>
                         </div>
                         <div class="card-img-wrap bg-brand-dark relative">
-                            <img alt="The Urban Pulse" class="card-img" src="assets/img/app-bike.webp" />
+                            <img alt="The Urban Pulse" class="card-img" src="assets/img/app-bike.webp" loading="lazy" width="800" height="600" />
                             <div
                                 class="absolute inset-0 bg-gradient-to-r from-brand-charcoal via-transparent to-transparent w-1/3">
                             </div>
@@ -294,7 +294,7 @@
                             </div>
                         </div>
                         <div class="card-img-wrap bg-brand-dark relative">
-                            <img alt="The Green Symbiosis" class="card-img" src="assets/img/motor-bike.webp" />
+                            <img alt="The Green Symbiosis" class="card-img" src="assets/img/motor-bike.webp" loading="lazy" width="800" height="600" />
                             <div
                                 class="absolute inset-0 bg-gradient-to-r from-brand-charcoal via-transparent to-transparent w-1/3">
                             </div>
@@ -546,7 +546,7 @@
 
                             <!-- Imagem Original Realista Restaurada (Sem filtros) -->
                             <img src="assets/img/map-city.webp" alt="Zmaj App Mobile Showroom"
-                                class="w-full h-auto object-contain origin-center transform scale-100">
+                                class="w-full h-auto object-contain origin-center transform scale-100" loading="lazy" width="600" height="1200">
                         </div>
                     </div>
                 </div>
@@ -730,6 +730,7 @@
             <!-- Cinematic Background Video -->
             <video id="download-video" autoplay loop muted playsinline poster=""
                 class="absolute inset-0 w-full h-full object-cover z-0">
+                <source src="assets/video/bike-city-web.webm" type="video/webm">
                 <source src="assets/video/bike-city-web.mp4" type="video/mp4">
             </video>
             <!-- Overlay for readability -->
@@ -921,7 +922,7 @@
 
     </main>
 
-    <!-- CORE LIBRARIES -->
+    <!-- CORE LIBRARIES & CONFIG -->
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>

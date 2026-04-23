@@ -414,6 +414,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background: linear-gradient(135deg, #2a2a2a 0%, #111111 100%);
 }
 
 .card-img {
@@ -615,11 +616,15 @@ body {
     transform: translate3d(0, 0, 0);
 }
 
-/* SUAVIZAÇÃO DE IMAGENS GRANDES */
+/* SUAVIZAÇÃO DE IMAGENS GRANDES E FALLBACKS */
 img {
     /* Mantém as extremidades suaves durante o GSAP Scaling */
     image-rendering: -webkit-optimize-contrast;
     -ms-interpolation-mode: bicubic;
+}
+
+video, #download-video {
+    background-color: #000000;
 }
 
 /* =========================================

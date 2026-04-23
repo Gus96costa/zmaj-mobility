@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. INITIALIZE LENIS (Elite Smooth Scroll - Silky)
     window.lenisInstance = new Lenis({
         duration: 2,
-        lerp: 0.05, // Silky (Ultra-smooth)
-        smoothWheel: true,
+        lerp: 0.1, // Adjusted for performance
+        smoothWheel: true, // Hardware-accelerated smoothing
         wheelMultiplier: 1,
     });
     window.lenisInstance.stop(); // Lock scroll initially
@@ -132,25 +132,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- ANIMACAO DO MANIFESTO STACK ---
+    // --- ANIMACAO DO MANIFESTO STACK (Lazy Evaluation via IntersectionObserver) ---
     const manifestoCards = gsap.utils.toArray('.manifesto-card');
+    const manifestoObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Initialize GSAP only when the section is at least 10% visible
+                manifestoCards.forEach((card, i) => {
+                    const nextCard = manifestoCards[i + 1];
+                    if (nextCard) {
+                        gsap.to(card.querySelector('.card-inner'), {
+                            scale: 0.9,
+                            opacity: 0.5,
+                            ease: "none",
+                            scrollTrigger: {
+                                trigger: nextCard,
+                                start: "top bottom",
+                                end: "top 10vh",
+                                scrub: true
+                            }
+                        });
+                    }
+                });
+                // Stop observing once initialized
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
 
-    manifestoCards.forEach((card, i) => {
-        const nextCard = manifestoCards[i + 1];
-        if (nextCard) {
-            gsap.to(card.querySelector('.card-inner'), {
-                scale: 0.9,
-                opacity: 0.5,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: nextCard,
-                    start: "top bottom",
-                    end: "top 10vh",
-                    scrub: true
-                }
-            });
-        }
-    });
+    const manifestoSectionRef = document.getElementById('vision');
+    if (manifestoSectionRef) {
+        manifestoObserver.observe(manifestoSectionRef);
+    }
 
     // --- FLASHLIGHT GLOBALLY NA MANIFESTO SECTION ---
     const manifestoSection = document.getElementById("vision");
@@ -595,49 +608,59 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const impactSection = document.getElementById('impact');
     if (impactSection) {
-        ScrollTrigger.create({
-            trigger: "#impact",
-            start: "top 75%", // Ativa quando a secção entra 75% no ecrã
-            onEnter: () => {
-                // 1. Animar a contagem dos números (0 a 1200)
-                const counters = document.querySelectorAll('#impact .gsap-counter');
-                counters.forEach(counter => {
-                    const target = parseInt(counter.getAttribute('data-target') || counter.innerText);
-                    // Reseta para 0 antes de animar
-                    counter.innerText = "0"; 
-                    gsap.to(counter, {
-                        innerHTML: target,
-                        duration: 2.5,
-                        snap: { innerHTML: 1 }, // Roda sem decimais
-                        ease: "power3.out"
-                    });
-                });
+        // Envolver a criação do ScrollTrigger em um IntersectionObserver
+        const impactObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    ScrollTrigger.create({
+                        trigger: "#impact",
+                        start: "top 75%", // Ativa quando a secção entra 75% no ecrã
+                        onEnter: () => {
+                            // 1. Animar a contagem dos números (0 a 1200)
+                            const counters = document.querySelectorAll('#impact .gsap-counter');
+                            counters.forEach(counter => {
+                                const target = parseInt(counter.getAttribute('data-target') || counter.innerText);
+                                // Reseta para 0 antes de animar
+                                counter.innerText = "0"; 
+                                gsap.to(counter, {
+                                    innerHTML: target,
+                                    duration: 2.5,
+                                    snap: { innerHTML: 1 }, // Roda sem decimais
+                                    ease: "power3.out"
+                                });
+                            });
 
-                // 2. Animar o SVG do Gráfico (A linha principal que se desenha)
-                // Procura a tag <path> que representa a linha do gráfico no Card 1
-                const chartLine = document.querySelector('#impact svg path.aura-slice'); 
-                if (chartLine) {
-                    const length = chartLine.getTotalLength();
-                    // Esconde a linha inicialmente
-                    gsap.set(chartLine, { strokeDasharray: length, strokeDashoffset: length });
-                    // Desenha a linha da esquerda para a direita
-                    gsap.to(chartLine, {
-                        strokeDashoffset: 0,
-                        duration: 2.5,
-                        ease: "power2.inOut",
-                        delay: 0.2
+                            // 2. Animar o SVG do Gráfico (A linha principal que se desenha)
+                            // Procura a tag <path> que representa a linha do gráfico no Card 1
+                            const chartLine = document.querySelector('#impact svg path.aura-slice'); 
+                            if (chartLine) {
+                                const length = chartLine.getTotalLength();
+                                // Esconde a linha inicialmente
+                                gsap.set(chartLine, { strokeDasharray: length, strokeDashoffset: length });
+                                // Desenha a linha da esquerda para a direita
+                                gsap.to(chartLine, {
+                                    strokeDashoffset: 0,
+                                    duration: 2.5,
+                                    ease: "power2.inOut",
+                                    delay: 0.2
+                                });
+                            }
+                        },
+                        once: true // Anima apenas a primeira vez que o utilizador passa
                     });
+                    observer.unobserve(entry.target);
                 }
-            },
-            once: true // Anima apenas a primeira vez que o utilizador passa
-        });
+            });
+        }, { threshold: 0.1 });
+        
+        impactObserver.observe(impactSection);
     }
 
 // ==========================================
 // LOAD STATE & REVEAL CHOREOGRAPHY
 // ==========================================
 window.addEventListener('load', () => {
-    // Força um pequeno atraso de segurança (100ms) para o GSAP estabilizar o matchMedia
+    // Força um pequeno atraso de segurança para otimização de CPU no Loader
     setTimeout(() => {
         gsap.to("#loader", {
             opacity: 0,
@@ -648,9 +671,31 @@ window.addEventListener('load', () => {
                 if (loader) loader.style.display = "none";
 
                 if (window.lenisInstance) window.lenisInstance.start();
-                if (window.bikeIntroTween) window.bikeIntroTween.play();
+                
+                // Delay para diluir o esforço de renderização
+                setTimeout(() => {
+                    if (window.bikeIntroTween) window.bikeIntroTween.play();
+                }, 200);
             }
         });
     }, 100);
+
+    // ==========================================
+    // VIDEO VISIBILITY TRACKING (Hardware Optimization)
+    // ==========================================
+    const bgVideo = document.getElementById('download-video');
+    if (bgVideo) {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    bgVideo.play().catch(e => console.warn("Video auto-play prevented:", e));
+                } else {
+                    bgVideo.pause();
+                }
+            });
+        }, { threshold: 0.05 }); // Ativa o listener mesmo com baixa visibilidade para não engasgar
+        
+        videoObserver.observe(bgVideo);
+    }
 });
 
