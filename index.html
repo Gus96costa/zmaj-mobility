@@ -34,7 +34,8 @@
 <body class="bg-brand-offwhite">
 
     <div id="loader" class="fixed inset-0 z-[100] bg-brand-offwhite flex items-center justify-center transition-all">
-        <img src="assets/img/logo-zmaj.webp" alt="Loading Zmaj" class="w-24 md:w-32 h-auto opacity-50 animate-pulse" width="128" height="128">
+        <img src="assets/img/logo-zmaj.webp" alt="Loading Zmaj" class="w-24 md:w-32 h-auto opacity-50 animate-pulse"
+            width="128" height="128">
     </div>
 
     <!-- Navbar: Pill Glass -->
@@ -44,23 +45,24 @@
         <a href="#home" class="flex items-center cursor-pointer flex-shrink-0 relative group nav-link-item"
             data-section="home" aria-label="Zmaj Homepage">
             <img src="assets/img/logo-zmaj.webp" alt="Zmaj Logo"
-                class="h-8 w-auto object-contain scale-[1.9] group-hover:scale-[2.1] transition-transform duration-500 drop-shadow-sm origin-center" width="128" height="128">
+                class="h-8 w-auto object-contain scale-[1.9] group-hover:scale-[2.1] transition-transform duration-500 drop-shadow-sm origin-center"
+                width="128" height="128">
         </a>
 
         <!-- Desktop Links -->
         <div class="hidden lg:flex items-center gap-6 xl:gap-10" role="navigation" aria-label="Main Navigation">
             <a href="#vision"
                 class="text-xs font-mono font-bold tracking-widest text-brand-charcoal transition-colors uppercase nav-link-item"
-                data-section="vision" aria-label="Explore Zmaj's Vision">Vision</a>
+                data-section="vision" aria-label="Explore Zmaj's Vision" data-i18n="nav_vision">Vision</a>
             <a href="#app-trigger"
                 class="text-xs font-mono font-bold tracking-widest text-brand-charcoal transition-colors uppercase nav-link-item"
-                data-section="app-trigger" aria-label="Learn about the Zmaj App">App</a>
+                data-section="app-trigger" aria-label="Learn about the Zmaj App" data-i18n="nav_app">App</a>
             <a href="#plans"
                 class="text-xs font-mono font-bold tracking-widest text-brand-charcoal transition-colors uppercase nav-link-item"
-                data-section="plans" aria-label="View our Plans and Performance">Plans</a>
+                data-section="plans" aria-label="View our Plans and Performance" data-i18n="nav_plans">Plans</a>
             <a href="#contacts"
                 class="text-xs font-mono font-bold tracking-widest text-brand-charcoal transition-colors uppercase nav-link-item"
-                data-section="contacts" aria-label="Contact Zmaj Support">Contacts</a>
+                data-section="contacts" aria-label="Contact Zmaj Support" data-i18n="nav_contacts">Contacts</a>
         </div>
 
         <!-- Action Group (Download + Hamburger) -->
@@ -71,7 +73,7 @@
                 onmousemove="this.style.setProperty('--mouse-x', (event.clientX - this.getBoundingClientRect().left) + 'px'); this.style.setProperty('--mouse-y', (event.clientY - this.getBoundingClientRect().top) + 'px');">
                 <div class="conversion-flashlight-reveal"></div>
                 <span class="relative z-10 flex items-center gap-2">
-                    Download
+                    <span data-i18n="nav_download">Download</span>
                     <span class="iconify group-hover:translate-x-1 transition-transform"
                         data-icon="solar:cloud-download-bold-duotone"></span>
                 </span>
@@ -90,13 +92,13 @@
     <div id="mobile-menu-overlay"
         class="fixed inset-0 z-[45] bg-brand-offwhite/95 backdrop-blur-xl opacity-0 pointer-events-none invisible transition-all duration-300 flex flex-col items-center justify-center gap-8">
         <a href="#vision"
-            class="mobile-nav-link text-3xl font-sans font-black text-brand-charcoal uppercase tracking-tighter hover:text-[#365CD1] transition-colors">Vision</a>
+            class="mobile-nav-link text-3xl font-sans font-black text-brand-charcoal uppercase tracking-tighter hover:text-[#365CD1] transition-colors" data-i18n="nav_vision">Vision</a>
         <a href="#app-trigger"
-            class="mobile-nav-link text-3xl font-sans font-black text-brand-charcoal uppercase tracking-tighter hover:text-[#365CD1] transition-colors">App</a>
+            class="mobile-nav-link text-3xl font-sans font-black text-brand-charcoal uppercase tracking-tighter hover:text-[#365CD1] transition-colors" data-i18n="nav_app">App</a>
         <a href="#plans"
-            class="mobile-nav-link text-3xl font-sans font-black text-brand-charcoal uppercase tracking-tighter hover:text-[#365CD1] transition-colors">Plans</a>
+            class="mobile-nav-link text-3xl font-sans font-black text-brand-charcoal uppercase tracking-tighter hover:text-[#365CD1] transition-colors" data-i18n="nav_plans">Plans</a>
         <a href="#contacts"
-            class="mobile-nav-link text-3xl font-sans font-black text-brand-charcoal uppercase tracking-tighter hover:text-[#365CD1] transition-colors">Contacts</a>
+            class="mobile-nav-link text-3xl font-sans font-black text-brand-charcoal uppercase tracking-tighter hover:text-[#365CD1] transition-colors" data-i18n="nav_contacts">Contacts</a>
 
         <!-- Close Button (Optional but good for UX) -->
         <button id="close-mobile-menu"
@@ -128,13 +130,16 @@
                 <div class="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
 
                     <!-- Camadas de Nuvens TRASEIRAS (Menor velocidade parallax) -->
-                    <img id="cloud-back-1" src="assets/templates/zipline/assets/background-clouds_31eb8f4f4c8f.webp" width="1400" height="600"
+                    <img id="cloud-back-1" src="assets/templates/zipline/assets/background-clouds_31eb8f4f4c8f.webp"
+                        width="1400" height="600"
                         class="absolute top-[5%] left-[-15vw] w-[60vw] min-w-[600px] opacity-80 z-10 pointer-events-none object-contain drop-shadow-lg">
-                    <img id="cloud-back-2" src="assets/templates/zipline/assets/clouds-p1-back_7072917a354a.webp" width="1400" height="600"
+                    <img id="cloud-back-2" src="assets/templates/zipline/assets/clouds-p1-back_7072917a354a.webp"
+                        width="1400" height="600"
                         class="absolute top-[10%] right-[-15vw] w-[60vw] min-w-[600px] opacity-80 z-10 pointer-events-none object-contain drop-shadow-lg">
 
                     <!-- Fundo da Cidade (lj.png) que surge ao final como "chão" -->
-                    <img id="city-ground" src="assets/img/lj-semfundo.webp" alt="City background" width="1920" height="1080"
+                    <img id="city-ground" src="assets/img/lj-semfundo.webp" alt="City background" width="1920"
+                        height="1080"
                         class="absolute bottom-0 left-0 z-0 w-full h-auto origin-bottom pointer-events-none"
                         style="transform: translateY(100%);">
 
@@ -142,7 +147,7 @@
                     <div id="beat-1"
                         class="absolute left-0 z-[15] text-left px-8 md:px-16 w-full lg:w-1/2 flex flex-col justify-center items-start pointer-events-none"
                         style="transform: translateY(20vh); opacity: 0;">
-                        <h3
+                        <h3 data-i18n="hero_1"
                             class="text-5xl md:text-7xl lg:text-[5.5rem] font-sans font-bold tracking-tighter leading-none glass-title">
                             Engineering the future of <br /><span class="text-[#4B5EC2] mix-blend-color-burn">urban
                                 mobility.</span>
@@ -160,7 +165,7 @@
                     <div id="beat-2"
                         class="absolute right-0 z-[25] text-right px-8 md:px-16 w-full lg:w-1/2 flex flex-col justify-center items-end pointer-events-none"
                         style="transform: translateY(20vh); opacity: 0;">
-                        <h3
+                        <h3 data-i18n="hero_2"
                             class="text-5xl md:text-7xl lg:text-[5.5rem] font-sans font-bold tracking-tighter leading-[1.1] glass-title">
                             Designed in Ljubljana.<br /><span class="text-[#4B5EC2] mix-blend-color-burn">Built
                                 for the
@@ -169,17 +174,19 @@
                     </div>
 
                     <!-- Camadas de Nuvens FRONTAIS (Maior velocidade/scrub) -->
-                    <img id="cloud-front-1" src="assets/templates/zipline/assets/foreground-clouds_30f0de30b804.webp" width="1600" height="800"
+                    <img id="cloud-front-1" src="assets/templates/zipline/assets/foreground-clouds_30f0de30b804.webp"
+                        width="1600" height="800"
                         class="absolute bottom-[-15%] left-[-20vw] w-[80vw] min-w-[800px] z-30 pointer-events-none object-contain drop-shadow-2xl">
                     <!-- Nuvem da direita Invertida via Tailwind (transform -scale-x-100) para abraçar simetricamente -->
-                    <img id="cloud-front-2" src="assets/templates/zipline/assets/foreground-clouds_30f0de30b804.webp" width="1600" height="800"
+                    <img id="cloud-front-2" src="assets/templates/zipline/assets/foreground-clouds_30f0de30b804.webp"
+                        width="1600" height="800"
                         class="absolute bottom-[-10%] right-[-20vw] w-[80vw] min-w-[800px] z-30 pointer-events-none transform -scale-x-100 object-contain drop-shadow-2xl">
 
                     <!-- BEAT 3 TEXT (Sobre tudo, Centralizado no Pouso) -->
                     <div id="beat-3"
                         class="absolute z-[40] text-center px-4 w-full flex flex-col justify-center items-center pointer-events-none"
                         style="transform: translateY(20vh); opacity: 0;">
-                        <h3
+                        <h3 data-i18n="hero_3"
                             class="text-5xl md:text-7xl lg:text-[6rem] font-sans font-extrabold tracking-tighter max-w-5xl leading-tight glass-title">
                             Zero emissions.<br /><span
                                 class="text-transparent bg-clip-text bg-gradient-to-r from-brand-aura to-white drop-shadow-lg">Pure
@@ -193,12 +200,11 @@
         <!-- SEÇÃO 2: MANIFESTO STACK -->
         <section id="vision" class="stack-section relative z-30 pb-[80vh]">
             <div class="text-center mb-20 px-6 pt-10">
-                <div class="text-xs uppercase tracking-widest mb-4 opacity-70 text-brand-aura font-mono">Zmaj Manifesto
+                <div class="text-xs uppercase tracking-widest mb-4 opacity-70 text-brand-aura font-mono" data-i18n="man_tag">Zmaj Manifesto
                 </div>
-                <h2
+                <h2 data-i18n="man_title"
                     class="text-5xl md:text-6xl lg:text-[5.5rem] font-sans font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-brand-aura to-white drop-shadow-lg">
-                    LJUBLJANA'S
-                    SOUL</h2>
+                    LJUBLJANA'S SOUL</h2>
             </div>
 
             <div class="stack-container">
@@ -210,13 +216,13 @@
                                 <div
                                     class="text-6xl font-sans font-extrabold mb-2 text-brand-aura interactive-light-target interactive-light-number">
                                     01</div>
-                                <h3 class="text-4xl font-sans font-bold text-white tracking-tight">The Heritage</h3>
-                                <p
+                                <h3 class="text-4xl font-sans font-bold text-white tracking-tight" data-i18n="man_c1_t">The Heritage</h3>
+                                <p data-i18n="man_c1_tag"
                                     class="text-sm mt-4 uppercase tracking-widest font-mono text-brand-zip interactive-light-target interactive-light-label">
                                     Plečnik’s Vision
                                 </p>
                             </div>
-                            <div class="text-[#DEDFE0] font-sans font-light text-lg xl:text-xl leading-relaxed">
+                            <div class="text-[#DEDFE0] font-sans font-light text-lg xl:text-xl leading-relaxed" data-i18n="man_c1_d">
                                 Since 2007, Ljubljana’s historical center has been a car-free ecological zone of 12
                                 hectares.
                                 Zmaj is the technological infrastructure designed to respect Jože Plečnik’s human-scale
@@ -225,7 +231,8 @@
                             </div>
                         </div>
                         <div class="card-img-wrap bg-brand-dark relative">
-                            <img alt="The Heritage" class="card-img" src="assets/img/cesta-bike.webp" loading="lazy" width="800" height="600" />
+                            <img alt="The Heritage" class="card-img" src="assets/img/cesta-bike.webp" loading="lazy"
+                                width="800" height="600" />
                             <div
                                 class="absolute inset-0 bg-gradient-to-r from-brand-charcoal via-transparent to-transparent w-1/3">
                             </div>
@@ -241,12 +248,12 @@
                                 <div
                                     class="text-6xl font-sans font-extrabold mb-2 text-brand-aura interactive-light-target interactive-light-number">
                                     02</div>
-                                <h3 class="text-4xl font-sans font-bold text-white tracking-tight">The Urban Pulse</h3>
-                                <p
+                                <h3 class="text-4xl font-sans font-bold text-white tracking-tight" data-i18n="man_c2_t">The Urban Pulse</h3>
+                                <p data-i18n="man_c2_tag"
                                     class="text-sm mt-4 uppercase tracking-widest font-mono text-brand-zip interactive-light-target interactive-light-label">
                                     Digital Rhythm</p>
                             </div>
-                            <div class="text-[#DEDFE0] font-sans font-light text-lg xl:text-xl leading-relaxed">
+                            <div data-i18n="man_c2_d" class="text-[#DEDFE0] font-sans font-light text-lg xl:text-xl leading-relaxed">
                                 A smart, invisible skeleton powers the city. The Zmaj network breathes life into urban
                                 commutes.
                                 Scan effortlessly, ride silently, and dock seamlessly at illuminated Zmaj Spots spread
@@ -255,13 +262,14 @@
                             </div>
                             <a href="#download"
                                 class="w-fit btn-beam btn-beam-blue bg-white/5 backdrop-blur-md border border-white/10 text-white px-8 py-3 rounded-full font-mono text-sm transition-all hover:bg-white/10 hover:shadow-[0_0_20px_rgba(75,94,194,0.3)] flex items-center gap-2 group">
-                                Download Zmaj App
+                                <span data-i18n="man_c2_btn_text">Download Zmaj App</span>
                                 <span class="iconify group-hover:translate-x-1 transition-transform"
                                     data-icon="solar:arrow-right-up-outline"></span>
                             </a>
                         </div>
                         <div class="card-img-wrap bg-brand-dark relative">
-                            <img alt="The Urban Pulse" class="card-img" src="assets/img/app-bike.webp" loading="lazy" width="800" height="600" />
+                            <img alt="The Urban Pulse" class="card-img" src="assets/img/app-bike.webp" loading="lazy"
+                                width="800" height="600" />
                             <div
                                 class="absolute inset-0 bg-gradient-to-r from-brand-charcoal via-transparent to-transparent w-1/3">
                             </div>
@@ -277,14 +285,13 @@
                                 <div
                                     class="text-6xl font-sans font-extrabold mb-2 text-brand-aura interactive-light-target interactive-light-number">
                                     03</div>
-                                <h3 class="text-4xl font-sans font-bold text-white tracking-tight">The Green Symbiosis
-                                </h3>
+                                <h3 class="text-4xl font-sans font-bold text-white tracking-tight" data-i18n="man_c3_t">The Green Symbiosis</h3>
                                 <p
                                     class="text-sm mt-4 uppercase tracking-widest font-mono text-brand-zip interactive-light-target interactive-light-label">
                                     Social
                                     Impact</p>
                             </div>
-                            <div class="text-[#DEDFE0] font-sans font-light text-lg xl:text-xl leading-relaxed">
+                            <div data-i18n="man_c3_d" class="text-[#DEDFE0] font-sans font-light text-lg xl:text-xl leading-relaxed">
                                 As the first EU capital to commit to a Zero Waste vision,
                                 Ljubljana relies on Zmaj to bridge the gap between urban growth and environmental
                                 preservation. By neutralizing carbon footprints and restoring the city’s natural
@@ -294,7 +301,8 @@
                             </div>
                         </div>
                         <div class="card-img-wrap bg-brand-dark relative">
-                            <img alt="The Green Symbiosis" class="card-img" src="assets/img/motor-bike.webp" loading="lazy" width="800" height="600" />
+                            <img alt="The Green Symbiosis" class="card-img" src="assets/img/motor-bike.webp"
+                                loading="lazy" width="800" height="600" />
                             <div
                                 class="absolute inset-0 bg-gradient-to-r from-brand-charcoal via-transparent to-transparent w-1/3">
                             </div>
@@ -321,7 +329,7 @@
                     <!-- Título do Trilho Esquerdo (Vantagens) embutido no slider -->
                     <div id="vantage-title"
                         class="w-full text-left z-10 opacity-0 pointer-events-none mb-2 lg:mb-4 xl:mb-10">
-                        <h2
+                        <h2 data-i18n="hub_tl"
                             class="text-2xl lg:text-4xl xl:text-6xl font-sans font-black tracking-tighter leading-[1.1] py-2 brand-gradient-title drop-shadow-sm">
                             Digital Ecosystem
                         </h2>
@@ -335,10 +343,10 @@
                                 class="w-8 h-8 lg:w-8 lg:h-8 rounded-full bg-brand-aura/10 text-brand-aura flex items-center justify-center mb-2 lg:mb-3 xl:w-10 xl:h-10 xl:mb-6">
                                 <span class="iconify text-lg" data-icon="solar:widget-add-bold-duotone"></span>
                             </div>
-                            <h4
+                            <h4 data-i18n="hub_c1_t"
                                 class="font-sans font-black tracking-tighter leading-[1.1] py-1 text-lg lg:text-xl xl:text-3xl brand-gradient-title mb-1 lg:mb-2 xl:mb-4">
                                 Connected Ecosystem</h4>
-                            <p
+                            <p data-i18n="hub_c1_d"
                                 class="text-brand-muted font-sans text-[11px] lg:text-[12px] xl:text-sm leading-tight mb-2 lg:mb-3 xl:mb-6">
                                 Smart dashboard
                                 with ride
@@ -351,10 +359,10 @@
                                 class="w-8 h-8 lg:w-8 lg:h-8 rounded-full bg-brand-zip/10 text-brand-zip flex items-center justify-center mb-2 lg:mb-3 xl:w-10 xl:h-10 xl:mb-6">
                                 <span class="iconify text-lg" data-icon="solar:leaf-bold-duotone"></span>
                             </div>
-                            <h4
+                            <h4 data-i18n="hub_c2_t"
                                 class="font-sans font-black tracking-tighter leading-[1.1] py-1 text-lg lg:text-xl xl:text-3xl brand-gradient-title mb-1 lg:mb-2 xl:mb-4">
                                 Zero Impact</h4>
-                            <p
+                            <p data-i18n="hub_c2_d"
                                 class="text-brand-muted font-sans text-[11px] lg:text-[12px] xl:text-sm leading-tight mb-2 lg:mb-3 xl:mb-6">
                                 Track your reduced
                                 carbon
@@ -367,10 +375,10 @@
                                 class="w-8 h-8 lg:w-8 lg:h-8 rounded-full bg-[#1c1b1b]/10 text-brand-charcoal flex items-center justify-center mb-2 lg:mb-3 xl:w-10 xl:h-10 xl:mb-6">
                                 <span class="iconify text-lg" data-icon="solar:shield-check-bold-duotone"></span>
                             </div>
-                            <h4
+                            <h4 data-i18n="hub_c3_t"
                                 class="font-sans font-black tracking-tighter leading-[1.1] py-1 text-lg lg:text-xl xl:text-3xl brand-gradient-title mb-1 lg:mb-2 xl:mb-4">
                                 Active Security</h4>
-                            <p
+                            <p data-i18n="hub_c3_d"
                                 class="text-brand-muted font-sans text-[11px] lg:text-[12px] xl:text-sm leading-tight mb-2 lg:mb-3 xl:mb-6">
                                 Perimeter monitoring via
                                 Bluetooth and immediate anti-theft locking system.</p>
@@ -390,7 +398,7 @@
                     <!-- Título do Trilho Direito (Planos) embutido no slider -->
                     <div id="pricing-title"
                         class="w-full text-right z-10 opacity-0 pointer-events-none mb-2 lg:mb-4 xl:mb-10 pr-4">
-                        <h2
+                        <h2 data-i18n="hub_tr"
                             class="text-2xl lg:text-4xl xl:text-6xl font-sans font-black tracking-tighter leading-[1.1] py-2 brand-gradient-title drop-shadow-sm">
                             Plans & Performance
                         </h2>
@@ -401,24 +409,24 @@
                         <!-- Card 1: Daily Pass -->
                         <div
                             class="flashlight-hub-card btn-beam flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[60vw] xl:w-[22vw] max-w-[320px] p-4 lg:p-5 xl:p-8 rounded-3xl shadow-[0_20px_60px_rgba(20,30,50,0.08)] pointer-events-auto relative flex flex-col border border-transparent hover:border-white/10 transition-all">
-                            <span
+                            <span data-i18n="hub_p1_tag"
                                 class="font-mono text-[10px] text-brand-muted font-bold uppercase tracking-widest mb-1 lg:mb-2 xl:mb-4 block">Starter</span>
-                            <h4
+                            <h4 data-i18n="hub_p1_t"
                                 class="font-sans font-black tracking-tighter leading-[1.1] py-1 text-lg lg:text-xl xl:text-3xl brand-gradient-title mb-1 lg:mb-2 xl:mb-4">
                                 Daily Pass</h4>
-                            <p
+                            <p data-i18n="hub_p1_d"
                                 class="text-brand-muted font-sans text-[11px] lg:text-[12px] xl:text-sm leading-tight mb-2 lg:mb-3 xl:mb-6">
                                 Perfect for
                                 travelers and occasional
                                 riders. 24-hour e-bike access.</p>
 
                             <div class="mt-auto">
-                                <div
+                                <div data-i18n="hub_p1_pr"
                                     class="font-mono font-bold text-brand-charcoal text-2xl lg:text-2xl xl:text-4xl mb-2 lg:mb-3 xl:mb-6">
                                     €5<span class="text-xs font-sans text-brand-muted font-normal">/day</span></div>
                                 <button
                                     class="w-fit self-start bg-gradient-to-r from-[#4B5EC2]/20 to-[#38BDF8]/20 backdrop-blur-md text-[#4B5EC2] px-5 py-2 rounded-full group transition-all hover:scale-105 hover:from-[#4B5EC2] hover:to-[#38BDF8] hover:text-white border border-[#4B5EC2]/30 font-sans font-bold text-[9px] tracking-widest uppercase">
-                                    <span class="relative z-10">Select Plan</span>
+                                    <span class="relative z-10" data-i18n="hub_p_btn_text">Select Plan</span>
                                 </button>
                             </div>
                         </div>
@@ -426,38 +434,38 @@
                         <!-- Card 2: Annual Subscription (Zmaj Pro) -->
                         <div id="card-zmaj-pro"
                             class="flashlight-hub-card btn-beam flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[60vw] xl:w-[22vw] max-w-[320px] p-4 lg:p-5 xl:p-8 rounded-3xl shadow-[0_20px_60px_rgba(20,30,50,0.08)] pointer-events-auto relative flex flex-col border border-transparent hover:border-white/10 transition-all">
-                            <div
+                            <div data-i18n="hub_p2_badge"
                                 class="absolute top-4 right-4 px-2 py-0.5 bg-[#4B5EC2]/10 text-[#4B5EC2] text-[9px] font-mono uppercase font-bold rounded-full">
                                 POPULAR</div>
-                            <span
+                            <span data-i18n="hub_p2_tag"
                                 class="font-mono text-[10px] text-brand-muted font-bold uppercase tracking-widest mb-1 lg:mb-2 xl:mb-4 block">Zmaj
                                 Pro</span>
-                            <h4
+                            <h4 data-i18n="hub_p2_t"
                                 class="font-sans font-black tracking-tighter leading-[1.1] py-1 text-lg lg:text-xl xl:text-3xl brand-gradient-title mb-1 lg:mb-2 xl:mb-4">
                                 Annual Plan</h4>
-                            <p
+                            <p data-i18n="hub_p2_d"
                                 class="text-brand-muted font-sans text-[11px] lg:text-[12px] xl:text-sm leading-tight mb-2 lg:mb-3 xl:mb-5">
                                 Unlimited rides,
                                 priority support, and theft coverage.</p>
 
                             <ul class="mb-2 lg:mb-3 xl:mb-6 space-y-1 xl:space-y-2">
-                                <li class="flex items-center gap-2 text-brand-muted text-[11px] font-sans">
+                                <li data-i18n="hub_p2_f1" class="flex items-center gap-2 text-brand-muted text-[11px] font-sans">
                                     <span class="iconify text-[#4B5EC2]" data-icon="solar:check-circle-bold"></span>
                                     Unlimited Rides
                                 </li>
-                                <li class="flex items-center gap-2 text-brand-muted text-[11px] font-sans">
+                                <li data-i18n="hub_p2_f2" class="flex items-center gap-2 text-brand-muted text-[11px] font-sans">
                                     <span class="iconify text-[#4B5EC2]" data-icon="solar:check-circle-bold"></span>
                                     Theft Coverage
                                 </li>
                             </ul>
 
                             <div class="mt-auto">
-                                <div
+                                <div data-i18n="hub_p2_pr"
                                     class="font-mono font-bold text-brand-charcoal text-2xl lg:text-2xl xl:text-4xl mb-2 lg:mb-3 xl:mb-6">
                                     €29<span class="text-xs font-sans text-brand-muted font-normal">/month</span></div>
                                 <button
                                     class="w-fit self-start bg-gradient-to-r from-[#4B5EC2]/20 to-[#38BDF8]/20 backdrop-blur-md text-[#4B5EC2] px-5 py-2.5 rounded-full group transition-all hover:scale-105 hover:from-[#4B5EC2] hover:to-[#38BDF8] hover:text-white border border-[#4B5EC2]/30 font-sans font-bold text-[9px] tracking-widest uppercase">
-                                    <span class="relative z-10">Select Plan</span>
+                                    <span class="relative z-10" data-i18n="hub_p_btn_text">Select Plan</span>
                                 </button>
                             </div>
                         </div>
@@ -465,12 +473,12 @@
                         <!-- Card 3: Business Fleet -->
                         <div
                             class="flashlight-hub-card btn-beam flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[60vw] xl:w-[22vw] max-w-[320px] p-4 lg:p-5 xl:p-8 rounded-3xl shadow-[0_20px_60px_rgba(20,30,50,0.08)] pointer-events-auto relative flex flex-col border border-transparent hover:border-white/10 transition-all">
-                            <span
+                            <span data-i18n="hub_p3_tag"
                                 class="font-mono text-[10px] text-brand-muted font-bold uppercase tracking-widest mb-1 lg:mb-2 xl:mb-4 block">Fleet</span>
-                            <h4
+                            <h4 data-i18n="hub_p3_t"
                                 class="font-sans font-black tracking-tighter leading-[1.1] py-1 text-lg lg:text-xl xl:text-3xl brand-gradient-title mb-1 lg:mb-2 xl:mb-4">
                                 Business</h4>
-                            <p
+                            <p data-i18n="hub_p3_d"
                                 class="text-brand-muted font-sans text-[11px] lg:text-[12px] xl:text-sm leading-tight mb-2 lg:mb-3 xl:mb-6">
                                 Custom solutions
                                 for companies and
@@ -478,12 +486,12 @@
                             </p>
 
                             <div class="mt-auto">
-                                <div
+                                <div data-i18n="hub_p3_pr"
                                     class="font-mono font-bold text-brand-charcoal text-2xl lg:text-2xl xl:text-4xl mb-2 lg:mb-3 xl:mb-6">
                                     Custom</div>
                                 <button
                                     class="w-fit self-start bg-gradient-to-r from-[#4B5EC2]/20 to-[#38BDF8]/20 backdrop-blur-md text-[#4B5EC2] px-5 py-2 rounded-full group transition-all hover:scale-105 hover:from-[#4B5EC2] hover:to-[#38BDF8] hover:text-white border border-[#4B5EC2]/30 font-sans font-bold text-[9px] tracking-widest uppercase">
-                                    <span class="relative z-10">Contact Us</span>
+                                    <span class="relative z-10" data-i18n="hub_p3_btn_text">Contact Us</span>
                                 </button>
                             </div>
                         </div>
@@ -515,7 +523,7 @@
                     <div id="intro-text-1"
                         class="absolute left-8 lg:left-[10%] top-1/2 -translate-y-1/2 opacity-0 text-left">
                         <div class="floating-text">
-                            <h2
+                            <h2 data-i18n="hub_i1"
                                 class="text-5xl md:text-7xl lg:text-[5.5rem] font-sans font-black tracking-tighter drop-shadow-2xl max-w-2xl leading-none glass-title">
                                 Engineering the future of <br /><span class='text-[#4B5EC2]'>connected mobility.</span>
                             </h2>
@@ -525,7 +533,7 @@
                     <div id="intro-text-2"
                         class="absolute right-8 lg:right-[10%] top-1/2 -translate-y-1/2 opacity-0 text-right">
                         <div class="floating-text">
-                            <h2
+                            <h2 data-i18n="hub_i2"
                                 class="text-5xl md:text-7xl lg:text-[5.5rem] font-sans font-black tracking-tighter drop-shadow-2xl max-w-2xl leading-none glass-title">
                                 Total control <br /><span class='text-[#4B5EC2]'>at your fingertips.</span>
                             </h2>
@@ -546,7 +554,8 @@
 
                             <!-- Imagem Original Realista Restaurada (Sem filtros) -->
                             <img src="assets/img/map-city.webp" alt="Zmaj App Mobile Showroom"
-                                class="w-full h-auto object-contain origin-center transform scale-100" loading="lazy" width="600" height="1200">
+                                class="w-full h-auto object-contain origin-center transform scale-100" loading="lazy"
+                                width="600" height="1200">
                         </div>
                     </div>
                 </div>
@@ -557,67 +566,88 @@
         <!-- SEÇÃO ESG: IMPACT & SUSTAINABILITY (Dark Mode Bridge) -->
         <section id="impact" class="relative w-full py-32 bg-brand-charcoal z-[25] overflow-hidden">
             <div class="absolute inset-0 bg-[url('assets/img/noise.png')] opacity-[0.03] pointer-events-none"></div>
-            
-            <!-- 1. Transição de Entrada (App Hub -> Impact) -->
-            <div class="absolute top-0 left-0 w-full h-[15vh] z-20 pointer-events-none" style="background: linear-gradient(to bottom, #9cc9f9 0%, #212121 100%);"></div>
 
-            <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)] relative z-10">
-                
+            <!-- 1. Transição de Entrada (App Hub -> Impact) -->
+            <div class="absolute top-0 left-0 w-full h-[15vh] z-20 pointer-events-none"
+                style="background: linear-gradient(to bottom, #9cc9f9 0%, #212121 100%);"></div>
+
+            <div
+                class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)] relative z-10">
+
                 <!-- CARD 1: O GRÁFICO MAIOR (Donut + Insights) -->
-                <div class="md:col-span-2 flashlight-card btn-beam relative overflow-hidden p-8 lg:p-10 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-md flex flex-col justify-between group hover:border-white/20 transition-all">
+                <div
+                    class="md:col-span-2 flashlight-card btn-beam relative overflow-hidden p-8 lg:p-10 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-md flex flex-col justify-between group hover:border-white/20 transition-all">
                     <div class="flex flex-col md:flex-row items-center justify-between gap-8 h-full">
-                        
+
                         <!-- Donut Side -->
                         <div class="relative w-[220px] h-[220px] shrink-0">
                             <svg class="w-full h-full" viewbox="0 0 36 36" style="transform: rotate(-90deg);">
-                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="3"></circle>
-                                
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="3"></circle>
+
                                 <!-- Slices convertidas em paths para animação GSAP facilitada se necessário, ou mantidas como círculos se o JS do usuário for adaptado -->
-                                <circle class="aura-slice" cx="18" cy="18" r="15.9" fill="none" stroke="#38BDF8" stroke-width="3.2" stroke-dasharray="18 82" stroke-dashoffset="0" stroke-linecap="round" style="animation: aura-chart-fill 2s ease-out forwards;"></circle>
-                                <circle class="aura-slice" cx="18" cy="18" r="15.9" fill="none" stroke="#365CD1" stroke-width="3.2" stroke-dasharray="12 88" stroke-dashoffset="-18" stroke-linecap="round" style="animation: aura-chart-fill 2s ease-out 0.2s forwards;"></circle>
-                                
+                                <circle class="aura-slice" cx="18" cy="18" r="15.9" fill="none" stroke="#38BDF8"
+                                    stroke-width="3.2" stroke-dasharray="18 82" stroke-dashoffset="0"
+                                    stroke-linecap="round" style="animation: aura-chart-fill 2s ease-out forwards;">
+                                </circle>
+                                <circle class="aura-slice" cx="18" cy="18" r="15.9" fill="none" stroke="#365CD1"
+                                    stroke-width="3.2" stroke-dasharray="12 88" stroke-dashoffset="-18"
+                                    stroke-linecap="round"
+                                    style="animation: aura-chart-fill 2s ease-out 0.2s forwards;"></circle>
+
                                 <!-- Esta é a slice/linha principal que o JS do usuário vai procurar e animar -->
-                                <path class="aura-slice" d="M33.9 18a15.9 15.9 0 1 1-31.8 0 15.9 15.9 0 1 1 31.8 0" fill="none" stroke="rgba(56,189,248,0.5)" stroke-width="3.2" stroke-dasharray="25 75" stroke-dashoffset="-30" stroke-linecap="round" />
+                                <path class="aura-slice" d="M33.9 18a15.9 15.9 0 1 1-31.8 0 15.9 15.9 0 1 1 31.8 0"
+                                    fill="none" stroke="rgba(56,189,248,0.5)" stroke-width="3.2"
+                                    stroke-dasharray="25 75" stroke-dashoffset="-30" stroke-linecap="round" />
                             </svg>
                             <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-                                <span class="font-mono text-4xl lg:text-5xl font-black text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]">
-                                    <span class="gsap-counter" data-target="1200">0</span><span class="text-4xl md:text-5xl text-brand-aura/80 ml-2">MWh</span>
+                                <span
+                                    class="font-mono text-4xl lg:text-5xl font-black text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]">
+                                    <span class="gsap-counter" data-target="1200">0</span><span
+                                        class="text-4xl md:text-5xl text-brand-aura/80 ml-2" data-i18n="imp_mwh">MWh</span>
                                 </span>
-                                <span class="text-[10px] uppercase tracking-widest text-brand-aura mt-1">Energy Recovered</span>
+                                <span data-i18n="imp_lbl" class="text-[10px] uppercase tracking-widest text-brand-aura mt-1">Energy
+                                    Recovered</span>
                             </div>
                         </div>
 
                         <!-- Info/List Side -->
                         <div class="flex-1 space-y-4 w-full">
                             <!-- Ícone Pulsante com Aura -->
-                            <div class="w-12 h-12 rounded-full bg-brand-aura/10 text-brand-aura flex items-center justify-center mb-6 relative">
+                            <div
+                                class="w-12 h-12 rounded-full bg-brand-aura/10 text-brand-aura flex items-center justify-center mb-6 relative">
                                 <div class="absolute inset-0 bg-brand-aura animate-pulse rounded-full opacity-30"></div>
                                 <span class="iconify text-2xl relative z-10" data-icon="solar:bolt-bold-duotone"></span>
                             </div>
-                            
-                            <h3 class="font-sans text-2xl lg:text-3xl font-black text-white tracking-tighter leading-none mb-4">
+
+                            <h3 data-i18n="imp_kin_t"
+                                class="font-sans text-2xl lg:text-3xl font-black text-white tracking-tighter leading-none mb-4">
                                 Kinetic energy regenerated
                             </h3>
-                            <p class="text-white/50 text-sm mt-2 font-sans font-light">Power automatically recovered through our smart regenerative braking system.</p>
+                            <p data-i18n="imp_kin_d" class="text-white/50 text-sm mt-2 font-sans font-light">Power automatically recovered
+                                through our smart regenerative braking system.</p>
                             <div class="space-y-3">
-                                <div class="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/5 group-hover:border-white/10 transition-all">
+                                <div
+                                    class="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/5 group-hover:border-white/10 transition-all">
                                     <div class="flex items-center gap-3">
                                         <div class="w-2 h-2 rounded-full bg-brand-aura shadow-[0_0_8px_#38BDF8]"></div>
-                                        <span class="text-xs text-white/70">Zmaj Active Fleet</span>
+                                        <span data-i18n="imp_f1" class="text-xs text-white/70">Zmaj Active Fleet</span>
                                     </div>
                                     <span class="text-xs font-mono text-brand-aura font-bold">640t</span>
                                 </div>
-                                <div class="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/5">
+                                <div
+                                    class="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/5">
                                     <div class="flex items-center gap-3">
                                         <div class="w-2 h-2 rounded-full bg-brand-zip shadow-[0_0_8px_#365CD1]"></div>
-                                        <span class="text-xs text-white/70">Connected Hubs</span>
+                                        <span data-i18n="imp_f2" class="text-xs text-white/70">Connected Hubs</span>
                                     </div>
                                     <span class="text-xs font-mono text-brand-zip font-bold">420t</span>
                                 </div>
-                                <div class="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/5">
+                                <div
+                                    class="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/5">
                                     <div class="flex items-center gap-3">
                                         <div class="w-2 h-2 rounded-full bg-white/20"></div>
-                                        <span class="text-xs text-white/70">Urban Rail Offset</span>
+                                        <span data-i18n="imp_f3" class="text-xs text-white/70">Urban Rail Offset</span>
                                     </div>
                                     <span class="text-xs font-mono text-white/40">140t</span>
                                 </div>
@@ -627,94 +657,118 @@
                 </div>
 
                 <!-- CARD 2: GRÁFICO CIRCULAR/RADIAL (Orbit Animation) -->
-                <div class="flashlight-card btn-beam relative overflow-hidden p-8 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-md flex flex-col justify-between items-center text-center group hover:border-white/20 transition-all">
+                <div
+                    class="flashlight-card btn-beam relative overflow-hidden p-8 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-md flex flex-col justify-between items-center text-center group hover:border-white/20 transition-all">
                     <!-- Ícone Pulsante com Aura -->
-                    <div class="w-12 h-12 rounded-full bg-brand-zip/10 text-brand-zip flex items-center justify-center mb-6 relative">
+                    <div
+                        class="w-12 h-12 rounded-full bg-brand-zip/10 text-brand-zip flex items-center justify-center mb-6 relative">
                         <div class="absolute inset-0 bg-brand-zip animate-pulse rounded-full opacity-30"></div>
                         <span class="iconify text-2xl relative z-10" data-icon="solar:cpu-bold-duotone"></span>
                     </div>
 
                     <div class="relative w-48 h-48 flex items-center justify-center scale-90 mb-6">
                         <!-- Background Grid/Decoration -->
-                        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#38BDF8 1px, transparent 0); background-size: 10px 10px;"></div>
-                        
+                        <div class="absolute inset-0 opacity-20"
+                            style="background-image: radial-gradient(#38BDF8 1px, transparent 0); background-size: 10px 10px;">
+                        </div>
+
                         <!-- Orbit system -->
                         <div class="relative w-40 h-40">
-                             <div class="absolute inset-0 rounded-full border border-brand-aura/20"></div>
-                             <div class="absolute inset-2 rounded-full border border-brand-zip/10"></div>
-                             
-                             <!-- Rotating elements -->
-                             <div class="absolute inset-0 z-10" style="animation: orbit 20s linear infinite;">
-                                 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-brand-charcoal border border-brand-aura flex items-center justify-center shadow-[0_0_15px_rgba(56,189,248,0.5)]" style="animation: orbit-reverse 20s linear infinite;">
-                                     <span class="iconify text-brand-aura" data-icon="solar:cpu-bold-duotone"></span>
-                                 </div>
-                             </div>
-                             <div class="absolute inset-6 z-10" style="animation: orbit 15s linear infinite reverse;">
-                                 <div class="absolute bottom-0 right-1/2 translate-x-1/2 w-6 h-6 rounded-full bg-brand-charcoal border border-brand-zip flex items-center justify-center" style="animation: orbit-reverse 15s linear infinite;">
-                                     <span class="iconify text-brand-zip text-xs" data-icon="solar:gps-bold-duotone"></span>
-                                 </div>
-                             </div>
+                            <div class="absolute inset-0 rounded-full border border-brand-aura/20"></div>
+                            <div class="absolute inset-2 rounded-full border border-brand-zip/10"></div>
 
-                             <!-- Center Text -->
-                             <div class="absolute inset-10 rounded-full bg-brand-charcoal/80 backdrop-blur-sm border border-white/5 flex flex-col items-center justify-center z-20">
-                                 <span class="font-mono text-4xl font-black text-white">
-                                    <span class="gsap-counter" data-target="12">0</span><span class="text-3xl text-brand-zip/80 ml-1">ms</span>
-                                 </span>
-                             </div>
+                            <!-- Rotating elements -->
+                            <div class="absolute inset-0 z-10" style="animation: orbit 20s linear infinite;">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-brand-charcoal border border-brand-aura flex items-center justify-center shadow-[0_0_15px_rgba(56,189,248,0.5)]"
+                                    style="animation: orbit-reverse 20s linear infinite;">
+                                    <span class="iconify text-brand-aura" data-icon="solar:cpu-bold-duotone"></span>
+                                </div>
+                            </div>
+                            <div class="absolute inset-6 z-10" style="animation: orbit 15s linear infinite reverse;">
+                                <div class="absolute bottom-0 right-1/2 translate-x-1/2 w-6 h-6 rounded-full bg-brand-charcoal border border-brand-zip flex items-center justify-center"
+                                    style="animation: orbit-reverse 15s linear infinite;">
+                                    <span class="iconify text-brand-zip text-xs"
+                                        data-icon="solar:gps-bold-duotone"></span>
+                                </div>
+                            </div>
+
+                            <!-- Center Text -->
+                            <div
+                                class="absolute inset-10 rounded-full bg-brand-charcoal/80 backdrop-blur-sm border border-white/5 flex flex-col items-center justify-center z-20">
+                                <span class="font-mono text-4xl font-black text-white">
+                                    <span class="gsap-counter" data-target="12">0</span><span
+                                        class="text-3xl text-brand-zip/80 ml-1" data-i18n="imp_ms">ms</span>
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <div class="relative z-10">
-                        <h3 class="font-sans text-xl font-black text-white tracking-tighter mb-2">Cloud latency</h3>
-                        <p class="text-white/40 text-sm font-serif italic">Real-time bike-to-app telemetry</p>
+                        <h3 data-i18n="imp_c_t" class="font-sans text-xl font-black text-white tracking-tighter mb-2">Cloud latency</h3>
+                        <p data-i18n="imp_c_d" class="text-white/40 text-sm font-serif italic">Real-time bike-to-app telemetry</p>
                     </div>
                 </div>
 
                 <!-- CARD 3: CARD INFERIOR/LATERAL (Ticket Network / Floating) -->
-                <div class="md:col-span-3 flashlight-card btn-beam relative overflow-hidden p-8 lg:p-10 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-md flex flex-col md:flex-row items-center justify-between group hover:border-white/20 transition-all">
-                    
+                <div
+                    class="md:col-span-3 flashlight-card btn-beam relative overflow-hidden p-8 lg:p-10 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-md flex flex-col md:flex-row items-center justify-between group hover:border-white/20 transition-all">
+
                     <div class="flex items-center gap-8 md:gap-12 w-full md:w-auto mb-10 md:mb-0">
                         <!-- Floating Logo System -->
                         <div class="relative w-32 h-32 flex items-center justify-center shrink-0">
                             <div class="absolute inset-0 rounded-full bg-brand-aura/5 animate-pulse-logo"></div>
-                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-aura to-brand-zip flex items-center justify-center shadow-2xl animate-float-1">
-                                <span class="iconify text-3xl text-white" data-icon="solar:magic-stick-3-bold-duotone"></span>
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-aura to-brand-zip flex items-center justify-center shadow-2xl animate-float-1">
+                                <span class="iconify text-3xl text-white"
+                                    data-icon="solar:magic-stick-3-bold-duotone"></span>
                             </div>
-                            
+
                             <!-- Connection nodes -->
-                            <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-brand-charcoal border border-white/10 flex items-center justify-center animate-float-2">
-                                <span class="iconify text-white/40 text-xs" data-icon="solar:map-point-bold-duotone"></span>
+                            <div
+                                class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-brand-charcoal border border-white/10 flex items-center justify-center animate-float-2">
+                                <span class="iconify text-white/40 text-xs"
+                                    data-icon="solar:map-point-bold-duotone"></span>
                             </div>
-                            <div class="absolute -bottom-2 -left-2 w-8 h-8 rounded-full bg-brand-charcoal border border-white/10 flex items-center justify-center animate-float-3">
-                                <span class="iconify text-white/40 text-xs" data-icon="solar:cloud-sun-bold-duotone"></span>
+                            <div
+                                class="absolute -bottom-2 -left-2 w-8 h-8 rounded-full bg-brand-charcoal border border-white/10 flex items-center justify-center animate-float-3">
+                                <span class="iconify text-white/40 text-xs"
+                                    data-icon="solar:cloud-sun-bold-duotone"></span>
                             </div>
                         </div>
 
                         <div class="text-left">
-                            <h3 class="font-sans text-3xl md:text-5xl font-black text-white tracking-tighter mb-2 italic">Predictive AI Routing</h3>
-                            <p class="text-brand-aura text-lg lg:text-xl font-serif italic opacity-80">Constantly analyzing traffic, topography, and battery to map your perfect trajectory.</p>
+                            <h3 data-i18n="imp_ai_t"
+                                class="font-sans text-3xl md:text-5xl font-black text-white tracking-tighter mb-2 italic">
+                                Predictive AI Routing</h3>
+                            <p data-i18n="imp_ai_d" class="text-brand-aura text-lg lg:text-xl font-serif italic opacity-80">Constantly
+                                analyzing traffic, topography, and battery to map your perfect trajectory.</p>
                         </div>
                     </div>
 
                     <div class="relative flex flex-col gap-4 w-full md:w-64">
-                         <div class="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10" style="animation: aura-float-card 4s ease-in-out infinite;">
-                             <div class="flex items-center gap-3">
-                                 <span class="iconify text-emerald-400" data-icon="solar:map-point-bold-duotone"></span>
-                                 <span class="text-xs text-white/60">Live Traffic Mapping</span>
-                             </div>
-                             <span class="text-[10px] uppercase font-bold text-white/20 tracking-widest text-right">Active</span>
-                         </div>
-                         <div class="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10" style="animation: aura-float-card 4s ease-in-out infinite; animation-delay: 1.5s;">
-                             <div class="flex items-center gap-3">
-                                 <span class="iconify text-brand-aura" data-icon="solar:cloud-sun-bold-duotone"></span>
-                                 <span class="text-xs text-white/60">Hyper-local Weather</span>
-                             </div>
-                         </div>
-                         <div class="flex items-center justify-between p-4 rounded-2xl bg-brand-zip/20 border border-brand-zip/30" style="animation: aura-float-card 4s ease-in-out infinite; animation-delay: 2.5s;">
-                             <div class="flex items-center gap-3">
-                                 <span class="iconify text-2xl text-white" data-icon="solar:accumulator-bold-duotone"></span>
-                                 <span class="text-xs text-white font-bold">Zmaj AI Engine Connect</span>
-                             </div>
-                         </div>
+                        <div class="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10"
+                            style="animation: aura-float-card 4s ease-in-out infinite;">
+                            <div class="flex items-center gap-3">
+                                <span class="iconify text-emerald-400" data-icon="solar:map-point-bold-duotone"></span>
+                                <span data-i18n="imp_m1" class="text-xs text-white/60">Live Traffic Mapping</span>
+                            </div>
+                            <span data-i18n="imp_m1_tag"
+                                class="text-[10px] uppercase font-bold text-white/20 tracking-widest text-right">Active</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10"
+                            style="animation: aura-float-card 4s ease-in-out infinite; animation-delay: 1.5s;">
+                            <div class="flex items-center gap-3">
+                                <span class="iconify text-brand-aura" data-icon="solar:cloud-sun-bold-duotone"></span>
+                                <span data-i18n="imp_m2" class="text-xs text-white/60">Hyper-local Weather</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-4 rounded-2xl bg-brand-zip/20 border border-brand-zip/30"
+                            style="animation: aura-float-card 4s ease-in-out infinite; animation-delay: 2.5s;">
+                            <div class="flex items-center gap-3">
+                                <span class="iconify text-2xl text-white"
+                                    data-icon="solar:accumulator-bold-duotone"></span>
+                                <span data-i18n="imp_m3" class="text-xs text-white font-bold">Zmaj AI Engine Connect</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -725,7 +779,9 @@
         <section id="download"
             class="relative w-full min-h-[110vh] overflow-hidden bg-black flex items-center justify-center z-30">
             <!-- 1. Máscara de Transição (Impact -> Download) -->
-            <div class="absolute top-0 left-0 w-full h-[25vh] z-20 pointer-events-none" style="background: linear-gradient(to bottom, #212121 0%, rgba(33, 33, 33, 0.5) 50%, transparent 100%);"></div>
+            <div class="absolute top-0 left-0 w-full h-[25vh] z-20 pointer-events-none"
+                style="background: linear-gradient(to bottom, #212121 0%, rgba(33, 33, 33, 0.5) 50%, transparent 100%);">
+            </div>
 
             <!-- Cinematic Background Video -->
             <video id="download-video" autoplay loop muted playsinline poster=""
@@ -745,7 +801,7 @@
                     <!-- Slide 1: App Stores -->
                     <div
                         class="carousel-slide-content absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none z-10">
-                        <h2
+                        <h2 data-i18n="dl_t1"
                             class="text-5xl md:text-8xl font-sans font-black tracking-tighter mb-32 leading-[1.1] py-4 brand-gradient-title drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
                             Available for <br />download now</h2>
                         <div
@@ -756,8 +812,8 @@
                                 <div class="conversion-flashlight-reveal"></div>
                                 <span class="iconify text-2xl relative z-10" data-icon="logos:apple-app-store"></span>
                                 <div class="text-left font-sans relative z-10">
-                                    <p class="text-[12px] uppercase tracking-widest opacity-70">Download on the</p>
-                                    <p class="text-xl font-black">App Store</p>
+                                    <p data-i18n="dl_app" class="text-[12px] uppercase tracking-widest opacity-70">Download on the</p>
+                                    <p class="text-xl font-black" data-i18n="dl_app_store">App Store</p>
                                 </div>
                             </a>
                             <a href="#"
@@ -766,8 +822,8 @@
                                 <div class="conversion-flashlight-reveal"></div>
                                 <span class="iconify text-2xl relative z-10" data-icon="logos:google-play-icon"></span>
                                 <div class="text-left font-sans relative z-10">
-                                    <p class="text-[12px] uppercase tracking-widest opacity-70">Get it on</p>
-                                    <p class="text-xl font-black">Google Play</p>
+                                    <p data-i18n="dl_play" class="text-[12px] uppercase tracking-widest opacity-70">Get it on</p>
+                                    <p class="text-xl font-black" data-i18n="dl_google_play">Google Play</p>
                                 </div>
                             </a>
                         </div>
@@ -776,7 +832,7 @@
                     <!-- Slide 2: QR Code -->
                     <div
                         class="carousel-slide-content absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none z-10">
-                        <h2
+                        <h2 data-i18n="dl_t2"
                             class="text-5xl md:text-8xl font-sans font-black tracking-tighter mb-32 leading-none brand-gradient-title drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
                             Scan to ride</h2>
                         <div class="conversion-beam p-6 bg-white/10 text-white hover:bg-white hover:text-black backdrop-blur-xl rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] relative group transition-all btn-beam"
@@ -794,7 +850,7 @@
                     <!-- Slide 3: Early Access -->
                     <div
                         class="carousel-slide-content absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none z-10">
-                        <h2
+                        <h2 data-i18n="dl_t3"
                             class="text-5xl md:text-8xl font-sans font-black tracking-tighter mb-32 leading-none brand-gradient-title drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
                             Join the future of <br />urban mobility</h2>
                         <div class="drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
@@ -803,7 +859,7 @@
                                 onmousemove="this.style.setProperty('--mouse-x', (event.clientX - this.getBoundingClientRect().left) + 'px'); this.style.setProperty('--mouse-y', (event.clientY - this.getBoundingClientRect().top) + 'px');">
                                 <div class="conversion-flashlight-reveal"></div>
                                 <span class="relative z-10 flex items-center gap-5">
-                                    Get Early Access
+                                    <span data-i18n="dl_btn_text">Get Early Access</span>
                                     <span class="iconify group-hover:translate-x-2 transition-transform"
                                         data-icon="solar:arrow-right-bold-duotone"></span>
                                 </span>
@@ -841,17 +897,17 @@
 
                     <!-- Ecosystem Menu -->
                     <div class="lg:col-span-3">
-                        <p
+                        <p data-i18n="ft_eco"
                             class="font-mono text-[9px] text-brand-aura uppercase tracking-[0.4em] mb-6 font-bold opacity-70">
                             Ecosystem</p>
                         <ul class="space-y-3">
-                            <li><a href="#"
+                            <li><a href="#" data-i18n="ft_l1"
                                     class="text-white/50 font-sans text-sm hover:text-white transition-colors footer-link-glow">The
                                     E-Bike</a></li>
-                            <li><a href="#"
+                            <li><a href="#" data-i18n="ft_l2"
                                     class="text-white/50 font-sans text-sm hover:text-white transition-colors footer-link-glow">App
                                     Hub</a></li>
-                            <li><a href="#"
+                            <li><a href="#" data-i18n="ft_l3"
                                     class="text-white/50 font-sans text-sm hover:text-white transition-colors footer-link-glow">Urban
                                     Network</a></li>
                         </ul>
@@ -859,17 +915,17 @@
 
                     <!-- Company Menu -->
                     <div class="lg:col-span-3">
-                        <p
+                        <p data-i18n="ft_comp"
                             class="font-mono text-[9px] text-brand-aura uppercase tracking-[0.4em] mb-6 font-bold opacity-70">
                             Company</p>
                         <ul class="space-y-3">
-                            <li><a href="#"
+                            <li><a href="#" data-i18n="ft_l4"
                                     class="text-white/50 font-sans text-sm hover:text-white transition-colors footer-link-glow">Our
                                     Journey</a></li>
-                            <li><a href="#"
+                            <li><a href="#" data-i18n="ft_l5"
                                     class="text-white/50 font-sans text-sm hover:text-white transition-colors footer-link-glow">Ljubljana
                                     Base</a></li>
-                            <li><a href="#"
+                            <li><a href="#" data-i18n="ft_l6"
                                     class="text-white/50 font-sans text-sm hover:text-white transition-colors footer-link-glow">Press
                                     Kit</a></li>
                         </ul>
@@ -877,20 +933,20 @@
 
                     <!-- Newsletter / Minimalist -->
                     <div class="lg:col-span-6 bg-white/5 backdrop-blur-md border border-white/5 p-8 rounded-2xl">
-                        <p
+                        <p data-i18n="ft_upd"
                             class="font-mono text-[9px] text-brand-aura uppercase tracking-[0.4em] mb-4 font-bold opacity-70">
                             Updates</p>
                         <div class="newsletter-flashlight-wrapper p-1 flex items-center mb-6">
                             <div class="newsletter-flashlight-reveal"></div>
-                            <input type="email" placeholder="EMAIL ADDRESS"
+                            <input type="email" placeholder="EMAIL ADDRESS" data-i18n="ft_mail"
                                 aria-label="Enter your email for Zmaj updates"
                                 class="flex-1 bg-transparent border-none px-4 py-3 text-white font-mono text-xs focus:outline-none placeholder:text-white/20 relative z-10" />
-                            <button aria-label="Sign up for our newsletter"
+                            <button aria-label="Sign up for our newsletter" data-i18n="ft_sign"
                                 class="bg-brand-aura text-black font-bold px-6 py-3 rounded-xl text-xs hover:bg-white transition-colors relative z-10">
                                 SIGN UP
                             </button>
                         </div>
-                        <p class="text-white/30 font-serif italic text-sm">
+                        <p data-i18n="ft_quote" class="text-white/30 font-serif italic text-sm">
                             "Engineering the future of urban freedom."
                         </p>
                     </div>
@@ -913,7 +969,7 @@
                         </a>
                     </div>
 
-                    <div class="text-white/10 font-mono text-[9px] tracking-[0.3em] uppercase">
+                    <div data-i18n="ft_rights" class="text-white/10 font-mono text-[9px] tracking-[0.3em] uppercase">
                         © 2026 ZMAJ MOBILITY
                     </div>
                 </div>
@@ -931,8 +987,24 @@
 
     <!-- GSAP LOGIC -->
     <!-- Custom Scripts -->
+    <script src="js/languages-zmaj.js"></script>
     <script src="js/main.js"></script>
 
+    <div class="fixed top-6 right-4 md:right-8 z-[100] flex flex-col items-end">
+        <!-- Active Language Button -->
+        <button id="lang-dropdown-btn" class="flex items-center gap-2 bg-black/40 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/10 shadow-2xl transition-all hover:bg-black/60 hover:scale-105" aria-label="Select Language">
+            <span id="active-lang-label" class="text-[12px] font-mono font-bold text-cyan-400 uppercase">PT</span>
+            <span class="iconify text-[12px] text-white/70" data-icon="solar:alt-arrow-down-linear"></span>
+        </button>
+        
+        <!-- Dropdown Options -->
+        <div id="lang-menu" class="absolute top-12 right-0 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl p-2 flex flex-col gap-1 w-16 transform scale-95 opacity-0 invisible origin-top-right transition-all duration-300 shadow-2xl">
+            <button class="lang-toggle flex items-center justify-center text-[11px] font-mono font-bold text-white/50 hover:text-cyan-400 hover:bg-white/10 rounded-xl py-2 w-full transition-all" data-lang="pt">PT</button>
+            <button class="lang-toggle flex items-center justify-center text-[11px] font-mono font-bold text-white/50 hover:text-cyan-400 hover:bg-white/10 rounded-xl py-2 w-full transition-all" data-lang="en">EN</button>
+            <button class="lang-toggle flex items-center justify-center text-[11px] font-mono font-bold text-white/50 hover:text-cyan-400 hover:bg-white/10 rounded-xl py-2 w-full transition-all" data-lang="es">ES</button>
+            <button class="lang-toggle flex items-center justify-center text-[11px] font-mono font-bold text-white/50 hover:text-cyan-400 hover:bg-white/10 rounded-xl py-2 w-full transition-all" data-lang="sl">SL</button>
+        </div>
+    </div>
 </body>
 
 </html>

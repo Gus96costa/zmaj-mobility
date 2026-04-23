@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Click manual nos dots: Prioridade total ao usuário
     carouselDots.forEach((dot, idx) => {
         dot.addEventListener("click", () => {
-            // Se clicarmos, queremos ver o slide imediatamente, mas o timer não deve 
+            // Se clicarmos, queremos ver o slide imediatamente, mas o timer não deve
             // rodar enquanto o mouse estiver sobre o dot ou o container
             stopAutoPlay();
             showSlide(idx);
@@ -603,58 +603,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-    // ==========================================
-    // SUSTAINABILITY IMPACT ANIMATION (DASHBOARD)
-    // ==========================================
-    const impactSection = document.getElementById('impact');
-    if (impactSection) {
-        // Envolver a criação do ScrollTrigger em um IntersectionObserver
-        const impactObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    ScrollTrigger.create({
-                        trigger: "#impact",
-                        start: "top 75%", // Ativa quando a secção entra 75% no ecrã
-                        onEnter: () => {
-                            // 1. Animar a contagem dos números (0 a 1200)
-                            const counters = document.querySelectorAll('#impact .gsap-counter');
-                            counters.forEach(counter => {
-                                const target = parseInt(counter.getAttribute('data-target') || counter.innerText);
-                                // Reseta para 0 antes de animar
-                                counter.innerText = "0"; 
-                                gsap.to(counter, {
-                                    innerHTML: target,
-                                    duration: 2.5,
-                                    snap: { innerHTML: 1 }, // Roda sem decimais
-                                    ease: "power3.out"
-                                });
+// ==========================================
+// SUSTAINABILITY IMPACT ANIMATION (DASHBOARD)
+// ==========================================
+const impactSection = document.getElementById('impact');
+if (impactSection) {
+    // Envolver a criação do ScrollTrigger em um IntersectionObserver
+    const impactObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                ScrollTrigger.create({
+                    trigger: "#impact",
+                    start: "top 75%", // Ativa quando a secção entra 75% no ecrã
+                    onEnter: () => {
+                        // 1. Animar a contagem dos números (0 a 1200)
+                        const counters = document.querySelectorAll('#impact .gsap-counter');
+                        counters.forEach(counter => {
+                            const target = parseInt(counter.getAttribute('data-target') || counter.innerText);
+                            // Reseta para 0 antes de animar
+                            counter.innerText = "0";
+                            gsap.to(counter, {
+                                innerHTML: target,
+                                duration: 2.5,
+                                snap: { innerHTML: 1 }, // Roda sem decimais
+                                ease: "power3.out"
                             });
+                        });
 
-                            // 2. Animar o SVG do Gráfico (A linha principal que se desenha)
-                            // Procura a tag <path> que representa a linha do gráfico no Card 1
-                            const chartLine = document.querySelector('#impact svg path.aura-slice'); 
-                            if (chartLine) {
-                                const length = chartLine.getTotalLength();
-                                // Esconde a linha inicialmente
-                                gsap.set(chartLine, { strokeDasharray: length, strokeDashoffset: length });
-                                // Desenha a linha da esquerda para a direita
-                                gsap.to(chartLine, {
-                                    strokeDashoffset: 0,
-                                    duration: 2.5,
-                                    ease: "power2.inOut",
-                                    delay: 0.2
-                                });
-                            }
-                        },
-                        once: true // Anima apenas a primeira vez que o utilizador passa
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        impactObserver.observe(impactSection);
-    }
+                        // 2. Animar o SVG do Gráfico (A linha principal que se desenha)
+                        // Procura a tag <path> que representa a linha do gráfico no Card 1
+                        const chartLine = document.querySelector('#impact svg path.aura-slice');
+                        if (chartLine) {
+                            const length = chartLine.getTotalLength();
+                            // Esconde a linha inicialmente
+                            gsap.set(chartLine, { strokeDasharray: length, strokeDashoffset: length });
+                            // Desenha a linha da esquerda para a direita
+                            gsap.to(chartLine, {
+                                strokeDashoffset: 0,
+                                duration: 2.5,
+                                ease: "power2.inOut",
+                                delay: 0.2
+                            });
+                        }
+                    },
+                    once: true // Anima apenas a primeira vez que o utilizador passa
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    impactObserver.observe(impactSection);
+}
 
 // ==========================================
 // LOAD STATE & REVEAL CHOREOGRAPHY
@@ -671,7 +671,7 @@ window.addEventListener('load', () => {
                 if (loader) loader.style.display = "none";
 
                 if (window.lenisInstance) window.lenisInstance.start();
-                
+
                 // Delay para diluir o esforço de renderização
                 setTimeout(() => {
                     if (window.bikeIntroTween) window.bikeIntroTween.play();
@@ -694,8 +694,87 @@ window.addEventListener('load', () => {
                 }
             });
         }, { threshold: 0.05 }); // Ativa o listener mesmo com baixa visibilidade para não engasgar
-        
+
         videoObserver.observe(bgVideo);
     }
 });
 
+// ==========================================
+// SISTEMA DE IDIOMAS (Zero-Module / Non-Invasive)
+// ==========================================
+function applyLanguage(lang) {
+    if (typeof translationsZmaj === 'undefined') {
+        console.warn('Dicionário de traduções não encontrado.');
+        return;
+    }
+
+    localStorage.setItem('zmaj_lang', lang);
+
+    if (translationsZmaj[lang].doc_title) document.title = translationsZmaj[lang].doc_title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && translationsZmaj[lang].doc_desc) metaDesc.content = translationsZmaj[lang].doc_desc;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translationsZmaj[lang] && translationsZmaj[lang][key]) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.placeholder = translationsZmaj[lang][key];
+            } else {
+                el.innerHTML = translationsZmaj[lang][key];
+            }
+        }
+    });
+
+    // Update active label text
+    const activeLabel = document.getElementById('active-lang-label');
+    if (activeLabel) {
+        activeLabel.innerText = lang.toUpperCase();
+    }
+
+    document.querySelectorAll('.lang-toggle').forEach(btn => {
+        if (btn.getAttribute('data-lang') === lang) {
+            btn.classList.add('text-cyan-400', 'bg-white/10');
+            btn.classList.remove('text-white/50');
+        } else {
+            btn.classList.remove('text-cyan-400', 'bg-white/10');
+            btn.classList.add('text-white/50');
+        }
+    });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('zmaj_lang') || 'pt';
+    applyLanguage(savedLang);
+    
+    const dropBtn = document.getElementById('lang-dropdown-btn');
+    const dropMenu = document.getElementById('lang-menu');
+
+    if (dropBtn && dropMenu) {
+        dropBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = !dropMenu.classList.contains('invisible');
+            if(isOpen) {
+                dropMenu.classList.remove('opacity-100', 'scale-100');
+                dropMenu.classList.add('opacity-0', 'invisible', 'scale-95');
+            } else {
+                dropMenu.classList.remove('opacity-0', 'invisible', 'scale-95');
+                dropMenu.classList.add('opacity-100', 'scale-100');
+            }
+        });
+
+        document.addEventListener('click', () => {
+            dropMenu.classList.remove('opacity-100', 'scale-100');
+            dropMenu.classList.add('opacity-0', 'invisible', 'scale-95');
+        });
+    }
+
+    document.querySelectorAll('.lang-toggle').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            applyLanguage(e.target.getAttribute('data-lang'));
+            if (dropMenu) {
+                dropMenu.classList.remove('opacity-100', 'scale-100');
+                dropMenu.classList.add('opacity-0', 'invisible', 'scale-95');
+            }
+        });
+    });
+});
